@@ -33,7 +33,11 @@ class _SplashScreenState extends State<SplashScreen>{
                 ),
               ),
               Padding(padding: EdgeInsets.only(bottom: 50.0),
-                child: Text("data"),
+                child: Text(
+                  "Bringing health closer to you",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                )
+                
               )
                 
               
