@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class OnboardingScreenOne extends StatefulWidget {
-  const OnboardingScreenOne({super.key});
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingScreenOne> createState() => _OnboardingScreenOneState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
