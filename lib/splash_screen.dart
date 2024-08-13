@@ -22,26 +22,50 @@ class _SplashScreenState extends State<SplashScreen>{
             ],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft
-          )),
-        child: const Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+          )
+        ),
+          
+        child: Stack(
             children: [
-              Padding(padding: EdgeInsets.only(bottom: 10.0),
-                child: Text(
-                  "HealthEase",
-                  style: TextStyle(color: Colors.white, fontSize: 35),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white.withOpacity(0.2)
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.add,
+                      size: 50,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 50.0),
-                child: Text(
-                  "Bringing health closer to you",
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                )
-                
-              )
-                
-              
-              
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10.0),
+                      child: Text(
+                        "HealthEase",
+                        style: TextStyle(color: Colors.white, fontSize: 35),
+                      ),
+                    ),
+                     Padding(padding: EdgeInsets.only(bottom: 50.0),
+                      child: Text(
+                        "Bringing health closer to you",
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      )             
+                    )
+                  ],
+                ),
+              ),
             ],
         ),
       ),
