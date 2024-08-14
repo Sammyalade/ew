@@ -116,6 +116,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "smooth_page_indicator",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/smooth_page_indicator-1.2.0+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
@@ -170,7 +176,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-08-13T17:51:24.682265Z",
+  "generated": "2024-08-14T15:08:14.991788Z",
   "generator": "pub",
   "generatorVersion": "3.5.0",
   "flutterRoot": "file:///home/olubiyioluwaseyi/Desktop/dev/flutter",
