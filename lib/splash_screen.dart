@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:health_eaze/onboarding_screen.dart';
+import 'package:health_eaze/welcome_screen.dart';
+import 'utilities.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -7,7 +12,37 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>{
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this, 
+      duration: const Duration(seconds: 5),
+      );
+
+    _controller.forward().whenComplete((){
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context)=> const WelcomeScreen()),
+      );
+    });
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    Timer(const Duration(seconds: 7), (){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const OnboardingScreen()),);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +52,8 @@ class _SplashScreenState extends State<SplashScreen>{
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-            Color.fromRGBO(117, 192, 195, 1.0),
-            Color.fromRGBO(55,59,68, 1.0)
+            primaryColorBlue,
+            black
             ],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft
