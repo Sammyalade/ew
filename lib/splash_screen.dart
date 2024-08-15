@@ -37,14 +37,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   @override
-  void initState(){
-    super.initState();
-    Timer(const Duration(seconds: 7), (){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const OnboardingScreen()),);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
