@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/OnboardingScreen.dart';
+import 'package:health_eaze/onboarding_screen.dart';
+import 'utilities.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,8 +41,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-            Color.fromRGBO(117, 192, 195, 1.0),
-            Color.fromRGBO(55,59,68, 1.0)
+            primaryColorBlue,
+            black
             ],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft

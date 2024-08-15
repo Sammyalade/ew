@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/utilities.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -9,7 +10,14 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class OnboardingScreenState extends State<OnboardingScreen> {
-  final PageController _pageController = PageController();
+  late PageController _pageController = PageController();
+  int currentPageIndex = 0;
+
+   @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();  
+  }
 
   @override
   void dispose(){
@@ -24,6 +32,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
       children: [
         Expanded(child: buildPageView()),
         buildSmoothIndicator(),
+        buildButton(),
       ],
     ),
    );
@@ -32,6 +41,11 @@ class OnboardingScreenState extends State<OnboardingScreen> {
  Widget buildPageView(){
   return PageView(
     controller: _pageController,
+    onPageChanged: (index){
+      setState(() {
+        currentPageIndex = index;
+      });
+    },
     children: getOnboardingPages(),
   );
  }
@@ -72,7 +86,13 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
   ];
  }
 
- Widget buildOnboardingPage({required String imagePath, required String bigText, required String smallText, required pageIndex}){
+ Widget buildOnboardingPage({
+  required String imagePath, 
+  required String bigText, 
+  required String smallText, 
+  required int pageIndex, 
+  bool isLastPage = false}){
+
   return Padding(
     padding: const EdgeInsets.all(16.0),
     child: Column(
@@ -108,7 +128,7 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
       style: const TextStyle(
         fontSize: 30,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(55,59,68, 1.0),
+        color: black,
       ),
       textAlign: TextAlign.center,
     );
@@ -119,7 +139,7 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
       text,
       style: const TextStyle(
         fontSize: 16,
-        color: Color.fromRGBO(55,59,68, 1.0),
+        color: black,
       ),
       textAlign: TextAlign.center,
     );
@@ -132,15 +152,52 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
         controller: _pageController,
         count: 4,
         effect: const ExpandingDotsEffect(
-          activeDotColor: Color.fromRGBO(117, 192, 195, 1.0),
+          activeDotColor: primaryColorBlue,
           dotColor: Colors.grey,
           dotHeight: 8,
           dotWidth: 6,
           spacing: 8,
-          expansionFactor: 3,
+          expansionFactor: 4,
         ),
-      ),);
+      ),
+    );
   }
+
+  Widget buildButton(){
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: ElevatedButton(
+        onPressed: () {
+        if (currentPageIndex ==3){
+
+        }else{
+          _pageController.nextPage(
+            duration: const Duration(milliseconds: 300),
+             curve: Curves.easeIn);
+        }
+      },
+      style: ElevatedButton.styleFrom(
+       backgroundColor: currentPageIndex == 3? primaryColorBlue: primaryColorPink,
+        foregroundColor: currentPageIndex ==3? Colors.white: Colors.white,
+        minimumSize: const Size(150, 60),
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          
+        ),
+         textStyle: const TextStyle(
+          fontSize: 16, 
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+        child: Text(currentPageIndex == 3 ? 'Sign Up': 'Skip')
+      ),
+    );
+  }
+
+  
+
+
 
 } 
 
