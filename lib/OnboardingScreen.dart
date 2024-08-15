@@ -36,50 +36,90 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   );
  }
 
+final String onboardingImage1 = 'images/onboarding_pictures/female_doctor_and_male_doctor_standing_together.png';
+final String onboardingImage2 = 'images/onboarding_pictures/Blue_pill_packaging.png';
+final String onboardingImage3 = 'images/onboarding_pictures/boy_scientist.png';
+final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_3d_2_1.png';
+
+
  List <Widget> getOnboardingPages(){
   return[
     buildOnboardingPage(
-      imagePath: '',
-      text: 'page 1',
+      imagePath: onboardingImage1,
+      bigText: 'Talk to a Doctor',
+      smallText: 'Get access to doctors at the comfort of your home',
+      pageIndex: 0,
     ),
      buildOnboardingPage(
-      imagePath: '',
-      text: 'page 2',
+      imagePath: onboardingImage2,
+      bigText: 'Access Pharmacies',
+      smallText: 'Get pharmacies closer to you',
+      pageIndex: 1,
     ),
      buildOnboardingPage(
-      imagePath: '',
-      text: 'page 3',
+      imagePath: onboardingImage3,
+      bigText: 'Access Laboratories',
+      smallText: 'Get access to laboratories ',
+      pageIndex: 2,
     ),
+    buildOnboardingPage(
+      imagePath: onboardingImage4,
+      bigText: 'Consult with Ease',
+      smallText: 'Consult with patients at your own comfort',
+      pageIndex: 3,
+    ),
+    
   ];
  }
 
- Widget buildOnboardingPage({required String imagePath, required String text}){
+ Widget buildOnboardingPage({required String imagePath, required String bigText, required String smallText, required pageIndex}){
   return Padding(
     padding: const EdgeInsets.all(16.0),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        buildImage(imagePath),
-        buildText(text),
+        buildImage(imagePath, pageIndex),
+        buildBigText(bigText),
+        buildSmallText(smallText),
       ],
     ),
   );
  }
   
-  Widget buildImage(String imagePath){
-    return Expanded(child: 
-      Center(
-        child: Image.asset(imagePath, fit: BoxFit.contain,),
-      )
-    );
+  Widget buildImage(String imagePath, int pageIndex){
+    double imageHeight;
+
+     if (pageIndex == 0) {
+      imageHeight = MediaQuery.of(context).size.height * 0.5;
+  } else {
+      imageHeight = MediaQuery.of(context).size.height * 0.45; 
+  }
+     return SizedBox(
+    height: imageHeight,
+    child: Center(
+      child: Image.asset(imagePath, fit: BoxFit.contain),
+    ),
+  );
   }
 
-  Widget buildText(String text){
+  Widget buildBigText(String text){
     return Text(
       text,
       style: const TextStyle(
-        fontSize: 20,
-        color: Colors.white,
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        color: Color.fromRGBO(55,59,68, 1.0),
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+   Widget buildSmallText(String text){
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 16,
+        color: Color.fromRGBO(55,59,68, 1.0),
       ),
       textAlign: TextAlign.center,
     );
@@ -90,10 +130,10 @@ class OnboardingScreenState extends State<OnboardingScreen> {
       padding: const EdgeInsets.all(16.0),
       child: SmoothPageIndicator(
         controller: _pageController,
-        count: 3,
+        count: 4,
         effect: const ExpandingDotsEffect(
           activeDotColor: Color.fromRGBO(117, 192, 195, 1.0),
-          dotColor: Color.fromRGBO(55,59,68, 1.0),
+          dotColor: Colors.grey,
           dotHeight: 8,
           dotWidth: 6,
           spacing: 8,
@@ -102,4 +142,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
       ),);
   }
 
-}
+} 
+
+
+
