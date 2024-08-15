@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/doctor_sign_up.dart';
-import 'package:health_eaze/sign_up.dart';
+import 'package:health_eaze/sign_in_page.dart';
+import 'package:health_eaze/sign_up_page.dart';
 import 'package:health_eaze/splash_screen.dart';
 
 void main() {
@@ -15,12 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  DoctorSignUp(),
+      home:  LoginScreen(),
     );
   }
 }
