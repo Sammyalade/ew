@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:health_eaze/onboarding_screen.dart';
 import 'package:health_eaze/welcome_screen.dart';
@@ -32,6 +34,14 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    Timer(const Duration(seconds: 7), (){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const OnboardingScreen()),);
+    });
   }
 
   @override
