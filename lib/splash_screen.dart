@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/onboarding_screen.dart';
+import 'package:health_eaze/welcome_screen.dart';
 import 'utilities.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _controller.forward().whenComplete((){
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context)=> const OnboardingScreen()),
+        MaterialPageRoute(builder: (context)=> const WelcomeScreen()),
       );
     });
   }

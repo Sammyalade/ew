@@ -169,6 +169,7 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
       child: ElevatedButton(
         onPressed: () {
         if (currentPageIndex ==3){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> DummySignUpPage()));
 
         }else{
           _pageController.nextPage(
@@ -190,16 +191,28 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
           fontWeight: FontWeight.bold,
         ),
       ),
-        child: Text(currentPageIndex == 3 ? 'Sign Up': 'Skip')
+        child: Text(currentPageIndex == 3 ? 'Get Started': 'Skip')
       ),
     );
   }
 
-  
-
-
-
 } 
+
+
+class DummySignUpPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sign Up'),
+      ),
+      body: const Center(
+        child: Text('Sign Up Page'),
+      ),
+    );
+  }
+
+}
 
 
 
