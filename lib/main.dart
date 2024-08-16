@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/doctor_sign_up.dart';
+import 'package:health_eaze/sign_in_page.dart';
+import 'package:health_eaze/sign_up_page.dart';
 import 'package:health_eaze/splash_screen.dart';
 import 'dashboard.dart';
 
@@ -12,16 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Health Eaze',
+      title: 'Health Ease',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashScreen(),
-        '/dashboard': (context) => const DashboardScreen(),
-      },
+      home:  SignUpScreen(),
+      home:  const SplashScreen(),
+      dashboard: const DashboardScreen()
     );
   }
 }

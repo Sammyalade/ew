@@ -1,0 +1,1 @@
+ C:\\Users\\ENVY\\Flutter\ Projects\\health_eaze_flutter\\.dart_tool\\flutter_build\\7bc90bce5cd567eb3ed7aa53054dbd24\\native_assets.yaml: 
