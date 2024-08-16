@@ -173,9 +173,11 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
           Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
 
         }else{
-          _pageController.nextPage(
-            duration: const Duration(milliseconds: 300),
-             curve: Curves.easeIn);
+          _pageController.animateToPage(
+              3, 
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeIn,
+            );
         }
       },
       style: ElevatedButton.styleFrom(
