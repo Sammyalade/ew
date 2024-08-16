@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/onboarding_screen.dart';
+import 'package:health_eaze/sign_in_page.dart';
 import 'package:health_eaze/utilities.dart';
 
 
@@ -18,13 +19,15 @@ class WelcomeScreen extends StatelessWidget {
             children: <Widget>[
               buildLogo(),
               const SizedBox(height: 20,),
-              buildBigText('Your everyday Doctor Appointment Medical app'),
+              buildBigText('Your everyday Doctor'),
+              buildBigText('Appointment Medical app'),
               const SizedBox(height: 10,),
-              buildSmallText('Book appointments, Talk to doctors, get list of pharmacies and labs near you with ease'),
+              buildSmallText('Book appointments, Talk to doctors, get list of pharmacies'),
+              buildSmallText('and labs near you with ease'),
               const SizedBox(height: 40,),
-              buildLoginButton(context),
+              buildSignUpButton(context,),
               const SizedBox(height: 20,),
-              buildSignUpButton(context,)
+              buildLoginButton(context),
             ],
           ),),
       ),
@@ -42,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
       style: const TextStyle(
         fontSize: 30,
         fontWeight: FontWeight.bold,
-        color: black,
+        color: primaryColorBlue,
       ),
       textAlign: TextAlign.center,
     );
@@ -52,8 +55,8 @@ class WelcomeScreen extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-        fontSize: 16,
-        color: black,
+        fontSize: 12,
+        color: Colors.grey,
       ),
       textAlign: TextAlign.center,
     );
@@ -62,7 +65,12 @@ class WelcomeScreen extends StatelessWidget {
   Widget buildLoginButton(BuildContext context){
     return ElevatedButton(onPressed:(){ navigateToLoginPage(context);},
     style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.grey,
+      foregroundColor: Colors.white,
       minimumSize: const Size(300, 60),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
     )
     , child: const Text('Login', style: TextStyle(fontSize: 18),
     )
@@ -75,7 +83,9 @@ class WelcomeScreen extends StatelessWidget {
         navigateToOnboardingPage(context);
       },
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(double.infinity, 60), // Full-width button
+        backgroundColor: primaryColorBlue,
+        foregroundColor: Colors.white,
+        minimumSize: const Size(300, 60), // Full-width button
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
@@ -97,7 +107,7 @@ class WelcomeScreen extends StatelessWidget {
   void navigateToLoginPage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => DummyLoginPage()),
+      MaterialPageRoute(builder: (context) => LoginScreen()),
     );
   }
 
