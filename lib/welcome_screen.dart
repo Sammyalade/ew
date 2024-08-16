@@ -21,7 +21,6 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 20,),
               buildBigText('Your everyday Doctor'),
               buildBigText('Appointment Medical app'),
-
               const SizedBox(height: 10,),
               buildSmallText('Book appointments, Talk to doctors, get list of pharmacies'),
               buildSmallText('and labs near you with ease'),
