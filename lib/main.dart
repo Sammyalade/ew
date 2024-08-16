@@ -3,8 +3,6 @@ import 'package:health_eaze/doctor_sign_up.dart';
 import 'package:health_eaze/sign_in_page.dart';
 import 'package:health_eaze/sign_up_page.dart';
 import 'package:health_eaze/splash_screen.dart';
-import 'dashboard.dart';
-
 void main() {
   runApp(const MyApp());
 }

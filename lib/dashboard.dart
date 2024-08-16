@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/utilities.dart';
 
 void main() {
   runApp(const MyApp());
@@ -260,10 +261,10 @@ class PatientScreen extends StatelessWidget {
           children: <Widget>[
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: primaryColorBlue,
               ),
               child: Text(
-                'Doctor\'s Dashboard',
+                'Menu',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -322,10 +323,10 @@ class AppointmentScreen extends StatelessWidget {
           children: <Widget>[
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: primaryColorBlue,
               ),
               child: Text(
-                'Doctor\'s Dashboard',
+                'Menu',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -387,7 +388,7 @@ class WalletScreen extends StatelessWidget {
           children: <Widget>[
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: primaryColorBlue,
               ),
               child: Text(
                 'Doctor\'s Dashboard',
