@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/sign_up_page.dart';
 import 'package:health_eaze/utilities.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -169,7 +170,7 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
       child: ElevatedButton(
         onPressed: () {
         if (currentPageIndex ==3){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> DummySignUpPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
 
         }else{
           _pageController.nextPage(
