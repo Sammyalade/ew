@@ -391,7 +391,7 @@ class WalletScreen extends StatelessWidget {
                 color: primaryColorBlue,
               ),
               child: Text(
-                'Doctor\'s Dashboard',
+                'Menu',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
