@@ -8,6 +8,7 @@ import 'package:health_eaze/qualification_form.dart';
 import 'package:health_eaze/registration_details.dart';
 import 'package:health_eaze/utils.dart';
 import 'package:health_eaze/utils/image_picker.dart';
+import 'dashboard.dart';
 import 'dart:io';
 
 class RegistrationForm extends StatefulWidget {
@@ -155,7 +156,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   context,
                   greenishColor,
                   'Submit',
-                  (context) => Placeholder(),
+                  (context) => MyApp(),
                 ),
                 SizedBox(height: 10)
               ],
