@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:health_eaze/onboarding_screen.dart';
 import 'package:health_eaze/welcome_screen.dart';
 import 'utilities.dart';
 
@@ -86,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     ),
                      Padding(padding: EdgeInsets.only(bottom: 50.0),
                       child: Text(
-                        "Bringing health closer to you",
+                        "Bringing health care closer to you",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       )             
                     )
