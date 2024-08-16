@@ -22,6 +22,7 @@ class RegistrationForm extends StatefulWidget {
 class _RegistrationFormState extends State<RegistrationForm> {
   File? _profileImage;
   File? _signatureImage;
+  TextEditingController controller = TextEditingController();
 
   // Function to pick image with a bottom sheet for source selection
   Future<void> _pickImage(bool isProfileImage) async {
@@ -90,17 +91,48 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 SizedBox(height: 10),
                 SpecialtyTextField(specialty: widget.specialty),
                 SizedBox(height: 10),
-                getFormButton(context, 'Educational Qualification', (context)=> QualificationForm()),
+                getFormButton(context, 'Educational Qualification',
+                    (context) => QualificationForm()),
                 SizedBox(height: 10),
-                getFormButton(context, 'Registration Details', (context)=> RegistrationDetails()),
+                getFormButton(context, 'Registration Details',
+                    (context) => RegistrationDetails()),
                 SizedBox(height: 10),
-                getFormButton(context, 'Add Clinic', (context)=> ClinicDetails()),
-                SizedBox(height: 10),
+                // getFormButton(context, 'Add Clinic', (context)=> ClinicDetails()),
+                // SizedBox(height: 10),
                 TextField(
+                  controller: controller,
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly
                   ],
+                  maxLength: 2,
+                  onTap: () {
+                    int? yearsOfExperience = int.tryParse(controller.text);
+                    if (yearsOfExperience == null ||
+                        yearsOfExperience < 0 ||
+                        yearsOfExperience > 50) {
+                          BorderSide(color: Colors.redAccent);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text(
+                                'Please enter a valid years of experience.')),
+                      );
+
+                    }
+                  },
+                  onTapAlwaysCalled: true,
+                  onSubmitted: (value) {
+                    int? yearsOfExperience = int.tryParse(value);
+                    if (yearsOfExperience == null ||
+                        yearsOfExperience < 0 ||
+                        yearsOfExperience > 50) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text(
+                                'Please enter a valid years of experience.')),
+                      );
+                    }
+                  },
                   decoration: InputDecoration(
                       labelText: 'Years of Experience',
                       labelStyle: TextStyle(color: Colors.grey),
@@ -119,7 +151,12 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   onUpload: () => _pickImage(false),
                 ),
                 SizedBox(height: 10),
-                buildSubmitButton(greenishColor, 'Submit'),
+                buildSubmitButton(
+                  context,
+                  greenishColor,
+                  'Submit',
+                  (context) => Placeholder(),
+                ),
                 SizedBox(height: 10)
               ],
             ),
@@ -269,11 +306,14 @@ class SignatureUploadWidget extends StatelessWidget {
   }
 }
 
-Widget buildSubmitButton(Color? buttonColor, String text) {
+Widget buildSubmitButton(BuildContext context, Color? buttonColor, String text,
+    Widget Function(BuildContext) builder) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: builder));
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: greenishColor,
         minimumSize: Size(double.infinity, 50),
