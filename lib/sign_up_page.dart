@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:health_eaze/address_form.dart';
+import 'package:health_eaze/doctor_sign_up.dart';
 import 'package:health_eaze/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -100,7 +101,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddressForm()));
+                      MaterialPageRoute(builder: (context) => DoctorSpecialityChoices()));
                 },
                 child: Text(
                   "Next",
