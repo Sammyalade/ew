@@ -66,9 +66,12 @@ class WelcomeScreen extends StatelessWidget {
   Widget buildLoginButton(BuildContext context){
     return ElevatedButton(onPressed:(){ navigateToLoginPage(context);},
     style: ElevatedButton.styleFrom(
-      backgroundColor: primaryColorBlue,
+      backgroundColor: Colors.grey,
       foregroundColor: Colors.white,
       minimumSize: const Size(300, 60),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
     )
     , child: const Text('Login', style: TextStyle(fontSize: 18),
     )
@@ -81,6 +84,8 @@ class WelcomeScreen extends StatelessWidget {
         navigateToOnboardingPage(context);
       },
       style: ElevatedButton.styleFrom(
+        backgroundColor: primaryColorBlue,
+        foregroundColor: Colors.white,
         minimumSize: const Size(300, 60), // Full-width button
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
