@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/onboarding_screen.dart';
-import 'package:health_eaze/sign_in_page.dart';
-import 'package:health_eaze/utilities.dart';
+import 'package:health_eaze/screens/introduction_pages/welcome_page/onboarding_screen.dart';
+import 'package:health_eaze/screens/introduction_pages/login_page/sign_in_page.dart';
+import 'package:health_eaze/utils/utilities.dart';
 
 
 class WelcomeScreen extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/utils.dart'; // Import your color utilities
+import 'package:health_eaze/utils/utils.dart'; // Import your color utilities
 
 class LoginScreen extends StatefulWidget {
   @override

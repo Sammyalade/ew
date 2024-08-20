@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:health_eaze/address_form.dart';
-import 'package:health_eaze/doctor_sign_up.dart';
-import 'package:health_eaze/utils.dart';
+import 'package:health_eaze/screens/introduction_pages/sign_up_page/address_form.dart';
+import 'package:health_eaze/screens/introduction_pages/sign_up_page/doctor_sign_up.dart';
+import 'package:health_eaze/utils/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

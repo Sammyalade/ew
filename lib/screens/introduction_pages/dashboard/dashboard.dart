@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/utilities.dart';
+import 'package:health_eaze/utils/utilities.dart';
 
 void main() {
   runApp(const MyApp());

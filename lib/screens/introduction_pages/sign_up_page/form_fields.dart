@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/utils.dart';
+import 'package:health_eaze/utils/utils.dart';
 
 TextField returnTextField(String labelText) {
   return TextField(

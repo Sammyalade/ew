@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_eaze/form_fields.dart';
-import 'package:health_eaze/utils.dart';
+import 'package:health_eaze/screens/introduction_pages/sign_up_page/form_fields.dart';
+import 'package:health_eaze/utils/utils.dart';
 
 class RegistrationDetails extends StatelessWidget {
   const RegistrationDetails({super.key});

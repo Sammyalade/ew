@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_eaze/utils.dart';
+import 'package:health_eaze/utils/utils.dart';
 
 class AddressForm extends StatelessWidget {
   const AddressForm({super.key});

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:health_eaze/welcome_screen.dart';
-import 'utilities.dart';
+import 'package:health_eaze/screens/introduction_pages/welcome_page/welcome_screen.dart';
+import '../../../utils/utilities.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/sign_up_page.dart';
-import 'package:health_eaze/utilities.dart';
+import 'package:health_eaze/screens/introduction_pages/sign_up_page/sign_up_page.dart';
+import 'package:health_eaze/utils/utilities.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {

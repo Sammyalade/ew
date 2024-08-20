@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/doctor_reg_form.dart';
-import 'package:health_eaze/utils.dart';
+import 'package:health_eaze/screens/introduction_pages/sign_up_page/doctor_reg_form.dart';
+import 'package:health_eaze/utils/utils.dart';
 
 class DoctorSpecialityChoices extends StatefulWidget {
   const DoctorSpecialityChoices({super.key});
