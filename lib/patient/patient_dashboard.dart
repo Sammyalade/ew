@@ -15,6 +15,8 @@ class PatientDashboard extends StatefulWidget {
 class _PatientDashboardState extends State<PatientDashboard> {
   int currentPageIndex = 0;
   String patientName = 'John Doe';
+  final String logo = 'images/logos/sus2.png';
+
 
   @override
   void initState(){
@@ -32,31 +34,38 @@ class _PatientDashboardState extends State<PatientDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text('Patient Dashboard',
-          style: TextStyle(
-            color: black
-          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: IndexedStack(
+                index: currentPageIndex,
+                children: [
+                  HomeScreen(patientName: patientName),
+                  const Vitals(),
+                  const Messages(),
+                  const Wallet(),
+                ],
+            ))
+          ],
         ),
-        centerTitle: true,
       ),
-      body: IndexedStack(
-        index: currentPageIndex,
-        children: [
-          HomeScreen(patientName: patientName),
-          const Vitals(),
-          const Messages(),
-          const Wallet(),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: buildBottomNavigationBar(),
+    );
+  }
+
+
+  Widget buildBottomNavigationBar(){
+    return BottomNavigationBar(
         currentIndex: currentPageIndex,
         onTap: (index){
           setState(() {
             currentPageIndex = index;
           });
         },
+        backgroundColor: primaryColorBlue,
+        selectedItemColor: primaryColorPink,
+        unselectedItemColor: black,
         items: const[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -75,7 +84,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
             label: 'Wallet',
           )
         ],
-      ),
     );
   }
+
 }
