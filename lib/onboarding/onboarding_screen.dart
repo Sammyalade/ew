@@ -170,7 +170,7 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
       child: ElevatedButton(
         onPressed: () {
         if (currentPageIndex ==3){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> const SignUpScreen()));
 
         }else{
           _pageController.animateToPage(
@@ -203,6 +203,8 @@ final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_
 
 
 class DummySignUpPage extends StatelessWidget {
+  const DummySignUpPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

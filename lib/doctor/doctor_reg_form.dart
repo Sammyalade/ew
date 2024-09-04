@@ -9,13 +9,13 @@ import 'package:health_eaze/doctor/qualification_form.dart';
 import 'package:health_eaze/doctor/registration_details.dart';
 import 'package:health_eaze/utils/utils.dart';
 import 'package:health_eaze/utils/image_picker.dart';
-import 'dashboard.dart';
+import 'doctor_dashboard.dart';
 import 'dart:io';
 
 class RegistrationForm extends StatefulWidget {
   final String specialty;
 
-  const RegistrationForm({required this.specialty});
+  const RegistrationForm({super.key, required this.specialty});
 
   @override
   _RegistrationFormState createState() => _RegistrationFormState();
@@ -175,16 +175,16 @@ class ProfileImageWidget extends StatelessWidget {
   final VoidCallback onEdit;
 
   const ProfileImageWidget({
-    Key? key,
+    super.key,
     required this.profileImage,
     required this.onEdit,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
+        SizedBox(
           height: 200,
           width: 200,
           child: CircleAvatar(
@@ -224,9 +224,9 @@ class SpecialtyTextField extends StatelessWidget {
   final String specialty;
 
   const SpecialtyTextField({
-    Key? key,
+    super.key,
     required this.specialty,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -250,8 +250,8 @@ class SpecialtyTextField extends StatelessWidget {
 // Widget for About TextField
 class AboutTextField extends StatelessWidget {
   const AboutTextField({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -278,10 +278,10 @@ class SignatureUploadWidget extends StatelessWidget {
   final VoidCallback onUpload;
 
   const SignatureUploadWidget({
-    Key? key,
+    super.key,
     required this.signatureImage,
     required this.onUpload,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

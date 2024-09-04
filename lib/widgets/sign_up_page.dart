@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:health_eaze/widgets/address_form.dart';
 import 'package:health_eaze/doctor/doctor_sign_up.dart';
 import 'package:health_eaze/utils/utils.dart';
 

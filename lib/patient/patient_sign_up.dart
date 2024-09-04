@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:health_eaze/widgets/address_form.dart';
-import 'package:health_eaze/doctor/doctor_sign_up.dart';
 import 'package:health_eaze/patient/patient_dashboard.dart';
 import 'package:health_eaze/utils/utils.dart';
 
@@ -66,9 +64,10 @@ class PatientSignUpScreen extends StatelessWidget {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 20),
-              SizedBox(height: 20),
-              inputTextField(Icon(Icons.person_outline), 'Full name'),
+              SizedBox(height: 40),
+              inputTextField(Icon(Icons.person_outline), 'First name'),
+              SizedBox(height: 10),
+              inputTextField(Icon(Icons.person_outline), 'Last name'),
               SizedBox(height: 10),
               inputTextField(Icon(Icons.phone_outlined), 'Phone'),
               SizedBox(height: 10),
