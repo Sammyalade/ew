@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:health_eaze/onboarding/welcome_screen.dart';
-import '../utils/utilities.dart';
-
+// import '../utils/utilities.dart';
+import '../../../utils/utilities.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

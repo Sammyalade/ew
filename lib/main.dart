@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/onboarding/splash_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
