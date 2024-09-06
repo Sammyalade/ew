@@ -297,7 +297,7 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/vm_service-14.2.4",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/vm_service-14.2.5",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -320,10 +320,10 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-08-16T12:48:52.771675Z",
+  "generated": "2024-09-06T17:00:19.293616Z",
   "generator": "pub",
-  "generatorVersion": "3.5.0",
+  "generatorVersion": "3.5.2",
   "flutterRoot": "file:///home/olubiyioluwaseyi/Desktop/dev/flutter",
-  "flutterVersion": "3.24.0",
+  "flutterVersion": "3.24.2",
   "pubCache": "file:///home/olubiyioluwaseyi/.pub-cache"
 }
