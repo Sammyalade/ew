@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/screens/introduction_pages/sign_up_page/doctor_reg_form.dart';
+import 'package:health_eaze/doctor/doctor_reg_form.dart';
 import 'package:health_eaze/utils/utils.dart';
 
 class DoctorSpecialityChoices extends StatefulWidget {
@@ -10,7 +10,7 @@ class DoctorSpecialityChoices extends StatefulWidget {
 }
 
 class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
-  int _selectedChoiceIndex = 0;
+  final int _selectedChoiceIndex = 0;
   String _selectedChoice = ''; // Variable to store selected choice index
   DateTime lastPressed = DateTime.now();
 
@@ -38,7 +38,7 @@ class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor Specialty'),
+        title: const Text('Doctor Specialty'),
         centerTitle: true,
       ),
       body: Padding(
@@ -47,17 +47,17 @@ class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
+              const Text(
                 'Please select the specialty that best describes your practice:',
                 style: TextStyle(fontSize: 16.0),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               SpecialityList(
                 choices: choices,
                 selectedChoice: _selectedChoice,
                 onSelectChoice: (choice) {
                   final now = DateTime.now();
-                  if (_selectedChoice == choice && now.difference(lastPressed) < Duration(seconds: 1)) {
+                  if (_selectedChoice == choice && now.difference(lastPressed) < const Duration(seconds: 1)) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -87,11 +87,11 @@ class SpecialityList extends StatelessWidget {
   final Function(String) onSelectChoice;
 
   const SpecialityList({
-    Key? key,
+    super.key,
     required this.choices,
     required this.selectedChoice,
     required this.onSelectChoice,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +115,11 @@ class SpecialityButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const SpecialityButton({
-    Key? key,
+    super.key,
     required this.choice,
     required this.isSelected,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
