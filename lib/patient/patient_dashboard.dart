@@ -16,7 +16,7 @@ class PatientDashboard extends StatefulWidget {
 class _PatientDashboardState extends State<PatientDashboard> {
   int currentPageIndex = 0;
   String patientName = 'John Doe';
-  final String logo = 'images/logos/sus2.png';
+  final String logo = 'asset/images/logos/sus2.png';
 
 
   @override

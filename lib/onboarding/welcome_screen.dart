@@ -6,7 +6,7 @@ import 'package:health_eaze/utils/utilities.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
-  final String logo = 'images/logos/sus.png';
+  final String logo = 'asset/images/logos/sus.png';
 
   @override
   Widget build(BuildContext context) {
