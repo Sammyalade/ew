@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/doctor/doctor_dashboard.dart';
+import 'package:health_eaze/lab/lab_dashboard.dart';
+import 'package:health_eaze/patient/patient_dashboard.dart';
+import 'package:health_eaze/pharmacy/pharm_dashboard.dart';
 import 'package:health_eaze/services/login_api_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
-import 'package:health_eaze/utils/utils.dart'; // Import your color utilities
+// Import your color utilities
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -59,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextField(
       controller: emailController,
       decoration: InputDecoration(
-        labelText: 'email/phone number',
+        labelText: 'email',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10)
         )
@@ -137,10 +141,9 @@ class _LoginScreenState extends State<LoginScreen> {
     try{
       final response = await loginApiService.login(emailOrPhoneNumber, password);
 
-      final token = response['token'];
-      final role = response['role'];
+      final role = response['user']['role'];
 
-      if(token != null){
+      if(role != null){
         if(context.mounted){
           navigateBasedOnRole(role, context);
         }
@@ -163,18 +166,30 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void navigateBasedOnRole(String role, BuildContext context){
-     final routeName = {
-      'patient': '/patient_dashboard',
-      'doctor': '/doctor_dashboard',
-      'pharmacy': '/pharm_dashboard',
-      'lab': '/lab_dashboard',
-    }[role];
+  void navigateBasedOnRole(String role, BuildContext context) {
+    Widget nextScreen;
 
-    if (routeName != null) {
-      Navigator.pushReplacementNamed(context, routeName);
-    } else {
-      showError('Unknown role: $role');
+    switch (role.toUpperCase()) {
+      case 'PATIENT':
+        nextScreen = const PatientDashboard();
+        break;
+      case 'DOCTOR':
+        nextScreen = const DoctorDashboard();
+        break;
+      case 'PHARMACY':
+        nextScreen = const PharmDashboard();
+        break;
+      case 'LAB':
+        nextScreen = const LabDashboard();
+        break;
+      default:
+        showError('Unknown role: $role');
+        return;
     }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => nextScreen),
+    );
   }
 }

@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_eaze/doctor/clinic_details.dart';
 import 'package:health_eaze/utils/form_fields.dart';
-import 'package:health_eaze/patient/patient_dashboard.dart';
 import 'package:health_eaze/doctor/qualification_form.dart';
 import 'package:health_eaze/doctor/registration_details.dart';
 import 'package:health_eaze/utils/utils.dart';

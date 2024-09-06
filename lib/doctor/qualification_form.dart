@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/doctor/doctor_reg_form.dart';
 import 'package:health_eaze/utils/form_fields.dart';
 import 'package:health_eaze/utils/utils.dart';
 
