@@ -6,7 +6,8 @@ import 'package:health_eaze/patient/wallet.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
 class PatientDashboard extends StatefulWidget {
-  const PatientDashboard({super.key});
+  // final String patientName;
+  const PatientDashboard({super.key,  });
 
   @override
   State<PatientDashboard> createState() => _PatientDashboardState();

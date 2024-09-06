@@ -15,6 +15,7 @@ class DoctorDashboard extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: const DashboardScreen(),
       routes: {
         '/patients': (context) => const PatientScreen(),
@@ -44,6 +45,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     const double walletBalance = 1234.56;
+    
 
     return Scaffold(
       appBar: AppBar(
