@@ -2,22 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-<<<<<<< HEAD
-import 'package:health_eaze/screens/introduction_pages/sign_up_page/clinic_details.dart';
-import 'package:health_eaze/screens/introduction_pages/sign_up_page/form_fields.dart';
-import 'package:health_eaze/screens/introduction_pages/sign_up_page/qualification_form.dart';
-import 'package:health_eaze/screens/introduction_pages/sign_up_page/registration_details.dart';
-import 'package:health_eaze/utils/image_picker.dart';
-import 'package:health_eaze/utils/utils.dart';
-=======
 import 'package:health_eaze/utils/form_fields.dart';
 import 'package:health_eaze/doctor/qualification_form.dart';
 import 'package:health_eaze/doctor/registration_details.dart';
 import 'package:health_eaze/utils/utils.dart';
 import 'package:health_eaze/utils/image_picker.dart';
-// import 'doctor_dashboard.dart';
->>>>>>> df16732012d084cbbd5ffbf278c07a4ea95c4ccf
-import '../dashboard/dashboard.dart';
+import 'doctor_dashboard.dart';
 import 'dart:io';
 
 class RegistrationForm extends StatefulWidget {
