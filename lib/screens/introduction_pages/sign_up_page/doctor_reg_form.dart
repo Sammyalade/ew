@@ -6,8 +6,8 @@ import 'package:health_eaze/screens/introduction_pages/sign_up_page/clinic_detai
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/form_fields.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/qualification_form.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/registration_details.dart';
+import 'package:health_eaze/utils/image_picker.dart';
 import 'package:health_eaze/utils/utils.dart';
-import '../../../../asset/utils/image_picker.dart';
 import '../dashboard/dashboard.dart';
 import 'dart:io';
 

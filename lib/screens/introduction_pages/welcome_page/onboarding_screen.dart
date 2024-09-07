@@ -51,10 +51,10 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   );
  }
 
-final String onboardingImage1 = 'images/onboarding_pictures/female_doctor_and_male_doctor_standing_together.png';
-final String onboardingImage2 = 'images/onboarding_pictures/Blue_pill_packaging.png';
-final String onboardingImage3 = 'images/onboarding_pictures/boy_scientist.png';
-final String onboardingImage4 = 'images/onboarding_pictures/online_consultation_3d_2_1.png';
+final String onboardingImage1 = 'asset/images/onboarding_pictures/female_doctor_and_male_doctor_standing_together.png';
+final String onboardingImage2 = 'asset/images/onboarding_pictures/Blue_pill_packaging.png';
+final String onboardingImage3 = 'asset/images/onboarding_pictures/boy_scientist.png';
+final String onboardingImage4 = 'asset/images/onboarding_pictures/online_consultation_3d_2_1.png';
 
 
  List <Widget> getOnboardingPages(){
