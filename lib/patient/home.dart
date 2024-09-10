@@ -6,7 +6,7 @@ import 'package:health_eaze/utils/utilities.dart';
 
 class HomeScreen extends StatelessWidget {
   final String patientName;
-  final String logo = 'images/logos/sus2.png';
+  final String logo = 'asset/images/logos/sus2.png';
   
   const HomeScreen({super.key, required this.patientName});
 
