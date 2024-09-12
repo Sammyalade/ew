@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart'; // Import this for date formatting
 import 'chat.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -18,29 +19,45 @@ class ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(8.0), 
-              child: CircleAvatar(
-                backgroundImage: NetworkImage('C:\\Users\\DELL\\Desktop\\health_eaze_flutter-main\\asset\\images\\logos\\logo.png'),
-                radius: 20.0,
+        title: SizedBox(
+          height: 50.0,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 40.0,
+                    height: 40.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 3.0,
+                      ),
+                    ),
+                    child: const CircleAvatar(
+                      backgroundImage: AssetImage('asset/images/logos/logo.png'),
+                      radius: 20.0,
+                    ),
+                  ),
+                  const SizedBox(width: 8.0),
+                  const Text(
+                    'Adeniyi Quadri',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Helvetica',
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0), 
-                child: Text(
-                  'Chatter', 
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16.0), 
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-      
       body: Column(
         children: [
           Expanded(
@@ -53,12 +70,46 @@ class ChatScreenState extends State<ChatScreen> {
 
                 final messages = snapshot.data!;
                 return ListView.builder(
+                  reverse: true,
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     final message = messages[index];
-                    return ListTile(
-                      title: Text(message['content']),
-                      subtitle: Text(message['timestamp'].toDate().toString()),
+                    final isSentByCurrentUser = message['isSentByCurrentUser'];
+                    final timestamp = message['timestamp'].toDate() as DateTime;
+                    
+                    // Format timestamp without seconds
+                    final formattedTime = DateFormat('yyyy-MM-dd HH:mm').format(timestamp);
+
+                    return Align(
+                      alignment: isSentByCurrentUser ? Alignment.centerRight : Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                          decoration: BoxDecoration(
+                            color: isSentByCurrentUser ? Colors.blueAccent : Colors.grey[300],
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: isSentByCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                message['content'],
+                                style: TextStyle(
+                                  color: isSentByCurrentUser ? Colors.white : Colors.black,
+                                ),
+                              ),
+                              Text(
+                                formattedTime,
+                                style: TextStyle(
+                                  color: isSentByCurrentUser ? Colors.white70 : Colors.black54,
+                                  fontSize: 12.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     );
                   },
                 );
@@ -73,18 +124,14 @@ class ChatScreenState extends State<ChatScreen> {
                   child: TextField(
                     controller: _messageController,
                     decoration: const InputDecoration(hintText: 'Type a message'),
+                    onSubmitted: (text) {
+                      _sendMessage();
+                    },
                   ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.send),
-                  onPressed: () {
-                    _chatService.addMessage(
-                      widget.chatRoomId,
-                      DateTime.now().toString(),
-                      _messageController.text,
-                    );
-                    _messageController.clear();
-                  },
+                  onPressed: _sendMessage,
                 ),
               ],
             ),
@@ -92,5 +139,17 @@ class ChatScreenState extends State<ChatScreen> {
         ],
       ),
     );
+  }
+
+  void _sendMessage() {
+    if (_messageController.text.isNotEmpty) {
+      _chatService.addMessage(
+        widget.chatRoomId,
+        DateTime.now().toIso8601String(),
+        _messageController.text,
+        isSentByCurrentUser: true,
+      );
+      _messageController.clear();
+    }
   }
 }
