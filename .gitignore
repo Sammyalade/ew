@@ -30,6 +30,7 @@ migrate_working_dir/
 .pub/
 /build/
 /.dart_tool
+/.vscode
 
 # Symbolication related
 app.*.symbols

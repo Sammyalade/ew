@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/screens/introduction_pages/sign_up_page/doctor_reg_form.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/form_fields.dart';
 import 'package:health_eaze/utils/utils.dart';
 
@@ -32,7 +31,7 @@ class QualificationForm extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(

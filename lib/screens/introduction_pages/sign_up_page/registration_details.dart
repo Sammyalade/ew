@@ -28,7 +28,7 @@ class RegistrationDetails extends StatelessWidget {
               ],
               decoration: InputDecoration(
                 labelText: 'Registration Year (YYYY)',
-                labelStyle: TextStyle(color: Colors.grey),
+                labelStyle: const TextStyle(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: blackishColor),
                 ),

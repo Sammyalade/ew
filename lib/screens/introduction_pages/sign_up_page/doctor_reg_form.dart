@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_eaze/screens/introduction_pages/sign_up_page/clinic_details.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/form_fields.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/qualification_form.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/registration_details.dart';
@@ -14,7 +13,7 @@ import 'dart:io';
 class RegistrationForm extends StatefulWidget {
   final String specialty;
 
-  const RegistrationForm({required this.specialty});
+  const RegistrationForm({super.key, required this.specialty});
 
   @override
   _RegistrationFormState createState() => _RegistrationFormState();
@@ -39,16 +38,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
               Navigator.pop(context);
               File? image =
                   await pickImage(sourceOption: ImageSourceOption.gallery);
-              if (image != null) {
-                setState(() {
-                  if (isProfileImage) {
-                    _profileImage = image;
-                  } else {
-                    _signatureImage = image;
-                  }
-                });
-              }
-            },
+              setState(() {
+                if (isProfileImage) {
+                  _profileImage = image;
+                } else {
+                  _signatureImage = image;
+                }
+              });
+                        },
           ),
           ListTile(
             leading: Icon(Icons.camera_alt),
@@ -57,16 +54,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
               Navigator.pop(context);
               File? image =
                   await pickImage(sourceOption: ImageSourceOption.camera);
-              if (image != null) {
-                setState(() {
-                  if (isProfileImage) {
-                    _profileImage = image;
-                  } else {
-                    _signatureImage = image;
-                  }
-                });
-              }
-            },
+              setState(() {
+                if (isProfileImage) {
+                  _profileImage = image;
+                } else {
+                  _signatureImage = image;
+                }
+              });
+                        },
           ),
         ],
       ),
@@ -174,16 +169,16 @@ class ProfileImageWidget extends StatelessWidget {
   final VoidCallback onEdit;
 
   const ProfileImageWidget({
-    Key? key,
+    super.key,
     required this.profileImage,
     required this.onEdit,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
+        SizedBox(
           height: 200,
           width: 200,
           child: CircleAvatar(
@@ -223,9 +218,9 @@ class SpecialtyTextField extends StatelessWidget {
   final String specialty;
 
   const SpecialtyTextField({
-    Key? key,
+    super.key,
     required this.specialty,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -249,8 +244,8 @@ class SpecialtyTextField extends StatelessWidget {
 // Widget for About TextField
 class AboutTextField extends StatelessWidget {
   const AboutTextField({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -277,10 +272,10 @@ class SignatureUploadWidget extends StatelessWidget {
   final VoidCallback onUpload;
 
   const SignatureUploadWidget({
-    Key? key,
+    super.key,
     required this.signatureImage,
     required this.onUpload,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

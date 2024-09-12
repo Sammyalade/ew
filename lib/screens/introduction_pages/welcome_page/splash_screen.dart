@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:health_eaze/screens/introduction_pages/welcome_page/welcome_screen.dart';

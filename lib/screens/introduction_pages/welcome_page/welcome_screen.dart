@@ -100,20 +100,22 @@ class WelcomeScreen extends StatelessWidget {
   void navigateToOnboardingPage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => OnboardingScreen()),
+      MaterialPageRoute(builder: (context) => const OnboardingScreen()),
     );
   }
 
   void navigateToLoginPage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
     );
   }
 
 }
 
 class DummyLoginPage extends StatelessWidget {
+  const DummyLoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

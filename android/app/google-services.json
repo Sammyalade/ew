@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "915505110368",
+    "project_id": "health-ease-ae456",
+    "storage_bucket": "health-ease-ae456.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915505110368:android:d8f9fab1c998d613afd205",
+        "android_client_info": {
+          "package_name": "com.health"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe9dZCGmMv3M2DckiXEhGcO3HhQxtkUIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915505110368:android:20593530b5aaa9d3afd205",
+        "android_client_info": {
+          "package_name": "com.health.ease"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe9dZCGmMv3M2DckiXEhGcO3HhQxtkUIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
