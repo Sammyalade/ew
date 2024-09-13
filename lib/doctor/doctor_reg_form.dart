@@ -7,6 +7,7 @@ import 'package:health_eaze/doctor/qualification_form.dart';
 import 'package:health_eaze/doctor/registration_details.dart';
 import 'package:health_eaze/utils/utils.dart';
 import 'package:health_eaze/utils/image_picker.dart';
+import 'package:health_eaze/widgets/sign_in_page.dart';
 import 'doctor_dashboard.dart';
 import 'dart:io';
 
@@ -155,7 +156,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   context,
                   greenishColor,
                   'Submit',
-                  (context) => DoctorDashboard(),
+                  (context) => LoginScreen(),
                 ),
                 SizedBox(height: 10)
               ],

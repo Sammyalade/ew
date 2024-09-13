@@ -1,14 +1,13 @@
-
 import 'package:flutter/material.dart';
-import 'package:health_eaze/patient/book_an_appointment.dart';
-import 'package:health_eaze/patient/doctor_details.dart';
+import 'package:health_eaze/doctor/appointments.dart';
+import 'package:health_eaze/doctor/notifications.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
-class HomeScreen extends StatelessWidget {
-  final String patientName;
+class Home extends StatelessWidget {
+  final String doctorName;
   final String logo = 'asset/images/logos/sus2.png';
   
-  const HomeScreen({super.key, required this.patientName});
+  const Home({super.key, required this.doctorName});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(height: 20,),
           buildAppointmentSection(context),
            const SizedBox(height: 20,),
-          buildTalkToDoctorSection(context),
+          buildNotification(context),
         ],
       ),
     );
@@ -37,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             logo,
             height: 50,),
           const SizedBox(width: 10,),
-          Text('Hi $patientName!',
+          Text('Hi $doctorName!',
             style: const TextStyle(
               fontSize: 20, 
               fontWeight: FontWeight.bold,
@@ -55,7 +54,7 @@ class HomeScreen extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context, MaterialPageRoute(
-            builder: (context)=> const BookAnAppointment(),
+            builder: (context)=> const Appointments(),
           ),
         );
       },
@@ -107,12 +106,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget buildTalkToDoctorSection(BuildContext context){
+  Widget buildNotification(BuildContext context){
     return GestureDetector(
       onTap: (){
         Navigator.push(
           context, MaterialPageRoute(
-            builder: (context)=> const DoctorDetails(),
+            builder: (context)=> const Notifications(),
           ),
         );
       },
@@ -145,7 +144,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(),
             Expanded(
               child: Text(
-                'Talk to a Doctor',
+                'Alerts and notifications',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -155,7 +154,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Icon(
-              Icons.arrow_forward_ios,
+              Icons.notification_important,
               color: Colors.white,
                size: 24,
             )
@@ -164,5 +163,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
 }
