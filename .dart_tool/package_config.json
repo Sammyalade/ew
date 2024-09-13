@@ -3,21 +3,15 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-72.0.0",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-67.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
-    },
-    {
-      "name": "_macros",
-      "rootUri": "file:///home/olubiyioluwaseyi/Desktop/dev/flutter/bin/cache/dart-sdk/pkg/_macros",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.0"
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/analyzer-6.7.0",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/analyzer-6.4.1",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.0"
     },
     {
       "name": "args",
@@ -63,15 +57,15 @@
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/build_runner-2.4.12",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/build_runner-2.4.11",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.4"
     },
     {
       "name": "build_runner_core",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/build_runner_core-7.3.2",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/build_runner_core-7.3.1",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.4"
     },
     {
       "name": "built_collection",
@@ -141,7 +135,7 @@
     },
     {
       "name": "dart_style",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/dart_style-2.3.7",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/dart_style-2.3.6",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -279,9 +273,9 @@
     },
     {
       "name": "image_picker_android",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+13",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+12",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.4"
     },
     {
       "name": "image_picker_for_web",
@@ -378,12 +372,6 @@
       "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/logging-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.19"
-    },
-    {
-      "name": "macros",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/macros-0.1.2-main.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
     },
     {
       "name": "matcher",
@@ -555,9 +543,9 @@
     },
     {
       "name": "url_launcher_android",
-      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.10",
+      "rootUri": "file:///home/olubiyioluwaseyi/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.9",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.4"
     },
     {
       "name": "url_launcher_ios",
@@ -650,7 +638,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-09-13T09:21:59.706689Z",
+  "generated": "2024-09-13T09:54:12.446306Z",
   "generator": "pub",
   "generatorVersion": "3.5.2",
   "flutterRoot": "file:///home/olubiyioluwaseyi/Desktop/dev/flutter",
