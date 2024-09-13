@@ -650,11 +650,7 @@
       "languageVersion": "3.4"
     }
   ],
-<<<<<<< Updated upstream
-  "generated": "2024-09-13T08:29:23.156002Z",
-=======
-  "generated": "2024-09-11T23:00:55.615001Z",
->>>>>>> Stashed changes
+  "generated": "2024-09-13T08:42:01.742938Z",
   "generator": "pub",
   "generatorVersion": "3.5.2",
   "flutterRoot": "file:///home/olubiyioluwaseyi/Desktop/dev/flutter",
