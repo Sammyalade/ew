@@ -1,3 +1,2 @@
-2024/09/06-18:12:08.614 36b7 Reusing MANIFEST /tmp/flutter_tools.CJNNFV/flutter_tools_chrome_device.SUXSPR/Default/Site Characteristics Database/MANIFEST-000001
-2024/09/06-18:12:08.614 36b7 Recovering log #3
-2024/09/06-18:12:08.614 36b7 Reusing old log /tmp/flutter_tools.CJNNFV/flutter_tools_chrome_device.SUXSPR/Default/Site Characteristics Database/000003.log 
+2024/09/13-10:18:55.274 78350 Creating DB /tmp/flutter_tools.JVOXKV/flutter_tools_chrome_device.OLAWRX/Default/Site Characteristics Database since it was missing.
+2024/09/13-10:18:55.284 78350 Reusing MANIFEST /tmp/flutter_tools.JVOXKV/flutter_tools_chrome_device.OLAWRX/Default/Site Characteristics Database/MANIFEST-000001
