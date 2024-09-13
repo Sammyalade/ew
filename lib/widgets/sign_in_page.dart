@@ -148,46 +148,10 @@ class LoginScreenState extends State<LoginScreen> {
     return;
   }
 
-  // try {
     final response = await loginApiService.login(email, password);
     response.goToDashboard(context);
     
-  //   final Map<String, dynamic> responseBody = jsonDecode(response.body);
-  //   print(responseBody);
-  //   var role = responseBody['user']['role'];
-  //   if (response.statusCode == 200) {
-  //     dynamic loginModel;
-  //     switch (role) {
-  //       case 'PATIENT':
-  //         final myObj = jsonDecode(response) as Map<String, dynamic>;
-  //         print(myObj);
-  //         // loginModel = PatientLoginModel.fromJson(responseBody);
-  //         if(mounted){
-  //           navigateToDashboard(context, loginModel);
-  //         }
-  //         break;
-  //       case 'DOCTOR':
-  //         loginModel = DoctorLoginModel.fromJson(responseBody);
-  //         if(mounted){
-  //           navigateToDashboard(context, loginModel);
-  //         }
-  //         break;
-  //       default:
-  //         showError('Unknown role');
-
-  //     }
-  //   } else {
-  //     showError('Login failed with status: ${response.statusCode}');
-  //   }
-
-  // } catch (e) {
-  //   if (e.toString().contains('401')) {
-  //     print(e);
-  //     showError('Invalid credentials. Please check your email/phone number and password.');
-  //   } else {
-  //     showError('An unexpected error occurred during login');
-  //   }
-  // }
+  
 }
 
 
