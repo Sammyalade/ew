@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/models/patient.dart';
 import 'package:health_eaze/patient/home.dart';
 import 'package:health_eaze/patient/messages.dart';
 import 'package:health_eaze/patient/vitals.dart';
@@ -7,10 +8,8 @@ import 'package:health_eaze/utils/navigation_bar.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
 class PatientDashboard extends StatefulWidget {
-  // final String patientName;
-  const PatientDashboard({
-    super.key,
-  });
+  final PatientLoginModel patientLoginModel;
+  const PatientDashboard({super.key, required this.patientLoginModel });
 
   @override
   State<PatientDashboard> createState() => _PatientDashboardState();
@@ -18,20 +17,13 @@ class PatientDashboard extends StatefulWidget {
 
 class _PatientDashboardState extends State<PatientDashboard> {
   int currentPageIndex = 0;
-  String patientName = 'John Doe';
+  String patientName = '';
   final String logo = 'asset/images/logos/sus2.png';
 
   @override
   void initState() {
     super.initState();
-    fetchPatientName();
-  }
-
-  void fetchPatientName() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      patientName = 'Mohammed';
-    });
+    patientName = widget.patientLoginModel.user.firstName;
   }
 
   @override

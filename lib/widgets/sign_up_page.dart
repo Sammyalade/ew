@@ -5,6 +5,7 @@ import 'package:health_eaze/patient/patient_dashboard.dart';
 import 'package:health_eaze/pharmacy/pharm_dashboard.dart';
 import 'package:health_eaze/services/sign_up_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
+import 'package:health_eaze/widgets/sign_in_page.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -221,7 +222,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         });
         try {
           if (_formKey.currentState!.validate()) {
-            // Extract the values from the controllers
             String firstName = _firstNameController.text;
             String lastName = _lastNameController.text;
             String phone = _phoneController.text;
@@ -230,7 +230,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             String password = _passwordController.text;
             String role = selectedRole;
 
-            // Call the sign up service
             await signUpService.signUp(
               firstName: firstName,
               lastName: lastName,
@@ -284,9 +283,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         nextScreen = const LabDashboard();
         break;
       case 'PATIENT':
-        nextScreen = const PatientDashboard();
+        nextScreen = const LoginScreen();
       default:
-        nextScreen = const PatientDashboard();
+        nextScreen = const LoginScreen();
     }
 
     Navigator.push(

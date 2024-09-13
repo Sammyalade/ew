@@ -36,12 +36,6 @@ class _DoctorListingPageState extends State<DoctorListingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Back navigation logic
-          },
-        ),
         title: Text('Doctors'),
         centerTitle: true,
         actions: [

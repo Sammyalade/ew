@@ -19,9 +19,7 @@ class DoctorDetailPage extends StatelessWidget {
           '${doctor.userProfile.firstName} ${doctor.userProfile.lastName}',
         ),
       ),
-      // bottomNavigationBar: buildBottomNavigationBar(0, (index) {
-        // Handle navigation in DoctorDetailPage
-      // }),
+      
       body: ListView(
         padding: EdgeInsets.all(20.0),
         children: <Widget>[
