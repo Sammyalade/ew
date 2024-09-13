@@ -3,11 +3,14 @@ import 'package:health_eaze/patient/home.dart';
 import 'package:health_eaze/patient/messages.dart';
 import 'package:health_eaze/patient/vitals.dart';
 import 'package:health_eaze/patient/wallet.dart';
+import 'package:health_eaze/utils/navigation_bar.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
 class PatientDashboard extends StatefulWidget {
   // final String patientName;
-  const PatientDashboard({super.key,  });
+  const PatientDashboard({
+    super.key,
+  });
 
   @override
   State<PatientDashboard> createState() => _PatientDashboardState();
@@ -18,19 +21,19 @@ class _PatientDashboardState extends State<PatientDashboard> {
   String patientName = 'John Doe';
   final String logo = 'asset/images/logos/sus2.png';
 
-
   @override
-  void initState(){
+  void initState() {
     super.initState();
     fetchPatientName();
   }
 
-  void fetchPatientName() async{
+  void fetchPatientName() async {
     await Future.delayed(const Duration(seconds: 2));
     setState(() {
       patientName = 'Mohammed';
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,53 +42,51 @@ class _PatientDashboardState extends State<PatientDashboard> {
         child: Column(
           children: [
             Expanded(
-              child: IndexedStack(
-                index: currentPageIndex,
-                children: [
-                  HomeScreen(patientName: patientName),
-                  const Vitals(),
-                  const Messages(),
-                  const Wallet(),
-                ],
+                child: IndexedStack(
+              index: currentPageIndex,
+              children: [
+                HomeScreen(patientName: patientName),
+                const Vitals(),
+                const Messages(),
+                const Wallet(),
+              ],
             ))
           ],
         ),
       ),
-      bottomNavigationBar: buildBottomNavigationBar(),
+      // bottomNavigationBar: const NavigationMenu(),
     );
   }
 
-
-  Widget buildBottomNavigationBar(){
+  Widget buildBottomNavigationBar() {
     return BottomNavigationBar(
-        currentIndex: currentPageIndex,
-        onTap: (index){
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        backgroundColor: primaryColorBlue,
-        selectedItemColor: primaryColorPink,
-        unselectedItemColor: black,
-        items: const[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Vitals',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Messages',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet),
-            label: 'Wallet',
-          )
-        ],
+      currentIndex: currentPageIndex,
+      onTap: (index) {
+        setState(() {
+          currentPageIndex = index;
+        });
+      },
+      backgroundColor: primaryColorBlue,
+      selectedItemColor: primaryColorPink,
+      unselectedItemColor: black,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Vitals',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.message),
+          label: 'Messages',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_balance_wallet),
+          label: 'Wallet',
+        )
+      ],
     );
   }
-
 }

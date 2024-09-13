@@ -4,9 +4,11 @@ import 'package:health_eaze/patient/book_an_appointment.dart';
 import 'package:health_eaze/patient/doctor_details.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
+import '../doctor/doctor_list.dart';
+
 class HomeScreen extends StatelessWidget {
   final String patientName;
-  final String logo = 'images/logos/sus2.png';
+  final String logo = 'asset/images/logos/sus2.png';
   
   const HomeScreen({super.key, required this.patientName});
 
@@ -112,7 +114,7 @@ class HomeScreen extends StatelessWidget {
       onTap: (){
         Navigator.push(
           context, MaterialPageRoute(
-            builder: (context)=> const DoctorDetails(),
+            builder: (context)=> DoctorListingPage(),
           ),
         );
       },
