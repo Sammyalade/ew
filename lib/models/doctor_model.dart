@@ -1,7 +1,10 @@
 // doctor_model.dart
+import 'package:flutter/material.dart';
+import 'package:health_eaze/models/login_model.dart';
+
 import 'user_model.dart'; // Import the User model
 
-class DoctorLoginModel {
+class DoctorLoginModel extends LoginModel{
   final String refreshToken;
   final User user; // Use the imported User model
   final List<dynamic> appointments;
@@ -38,5 +41,9 @@ class DoctorLoginModel {
         'notifications': notifications,
       },
     };
+  }
+  void goToDashboard(BuildContext context){
+
+    print("doctors dashboard");
   }
 }

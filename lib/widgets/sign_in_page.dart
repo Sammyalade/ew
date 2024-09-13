@@ -148,46 +148,48 @@ class LoginScreenState extends State<LoginScreen> {
     return;
   }
 
-  print("This is working here");
-  try {
+  // try {
     final response = await loginApiService.login(email, password);
-    print("This is working here");
-    if (response.statusCode == 200) {
-      print(response);
-      validateAndNavigate(context, response.body); // Call the validation method
-    } else {
-      print(response);
-      showError('Login failed with status: ${response.statusCode}');
-    }
+    response.goToDashboard(context);
+    
+  //   final Map<String, dynamic> responseBody = jsonDecode(response.body);
+  //   print(responseBody);
+  //   var role = responseBody['user']['role'];
+  //   if (response.statusCode == 200) {
+  //     dynamic loginModel;
+  //     switch (role) {
+  //       case 'PATIENT':
+  //         final myObj = jsonDecode(response) as Map<String, dynamic>;
+  //         print(myObj);
+  //         // loginModel = PatientLoginModel.fromJson(responseBody);
+  //         if(mounted){
+  //           navigateToDashboard(context, loginModel);
+  //         }
+  //         break;
+  //       case 'DOCTOR':
+  //         loginModel = DoctorLoginModel.fromJson(responseBody);
+  //         if(mounted){
+  //           navigateToDashboard(context, loginModel);
+  //         }
+  //         break;
+  //       default:
+  //         showError('Unknown role');
 
-  } catch (e) {
-    if (e.toString().contains('401')) {
-      print(e);
-      showError('Invalid credentials. Please check your email/phone number and password.');
-    } else {
-      showError('An unexpected error occurred during login');
-    }
-  }
+  //     }
+  //   } else {
+  //     showError('Login failed with status: ${response.statusCode}');
+  //   }
+
+  // } catch (e) {
+  //   if (e.toString().contains('401')) {
+  //     print(e);
+  //     showError('Invalid credentials. Please check your email/phone number and password.');
+  //   } else {
+  //     showError('An unexpected error occurred during login');
+  //   }
+  // }
 }
 
-void validateAndNavigate(BuildContext context, String responseBody) {
-  try {
-    final loginModel = PatientLoginModel.fromJson(jsonDecode(responseBody));
-    print('Parsed login model: $loginModel');
-
-    if (loginModel is PatientLoginModel) {
-      navigateToDashboard(context, loginModel);
-    } else if (loginModel is DoctorLoginModel) {
-      navigateToDashboard(context, loginModel);
-    } else {
-      showError('Invalid role received');
-    }
-
-  } catch (e) {
-    print('Error parsing login model: $e');
-    showError('Error processing login data. Please try again.');
-  }
-}
 
    void showError(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -197,8 +199,7 @@ void validateAndNavigate(BuildContext context, String responseBody) {
 
   void navigateToDashboard(BuildContext context, dynamic model) {
     Widget nextScreen;
-
-   if (model is PatientLoginModel) {
+     if (model is PatientLoginModel) {
       nextScreen = PatientDashboard(patientLoginModel: model);
     } else if (model is DoctorLoginModel) {
       nextScreen = DoctorDashboard(doctorLoginModel: model);

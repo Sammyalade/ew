@@ -20,30 +20,33 @@ class LoginApiService{
       }),
     );
 if (response.statusCode == 200) {
-        print('Login successful: ${response.body}');
-        final responseBody = json.decode(response.body);
-        final role = responseBody['user']['role'];
-        print(role);
+      print('response is 200');
+        final Map<String, dynamic> responseBody = json.decode(response.body);
+        print(responseBody);
+        print('response body gotten');
+        var role = responseBody['user']['role'];
+        print('role gotten');
         if (role == 'PATIENT') {
-          print("it works at this point");
-          print("it works at this point");
-          var patient = PatientLoginModel.fromJson(responseBody['PATIENT']);
-          print(patient);
+
+          print('role is patient');
+          
+          var patient = PatientLoginModel.fromJson(responseBody);
+          print('patient from login service');
+          print(patient.toString());
           return patient;
         } else if (role == 'DOCTOR') {
-          return DoctorLoginModel.fromJson(responseBody['DOCTOR']);
+          var doctor = DoctorLoginModel.fromJson(responseBody);
+          return doctor;
         } else {
-          print("it works at this point");
           throw Exception('Unknown role');
         }
       } else if (response.statusCode == 401) {
-        print(response.statusCode);
         throw Exception('Invalid credentials');
       } else {
         throw Exception('Failed to log in: Server error');
       }
     } catch (e) {
-      print("something went wrong here ; ${e}");
+      print(e);
       throw Exception('Failed to login: ${e.toString()}');
     }
   }
