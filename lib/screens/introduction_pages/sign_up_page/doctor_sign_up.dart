@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/doctor/doctor_reg_form.dart';
-import 'package:health_eaze/utils/utils.dart';
+import '../../../widgets/doctor_specialties.dart'; // New utility file for specialty choices
 
 class DoctorSpecialityChoices extends StatefulWidget {
   const DoctorSpecialityChoices({super.key});
@@ -10,29 +10,8 @@ class DoctorSpecialityChoices extends StatefulWidget {
 }
 
 class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
-  final int _selectedChoiceIndex = 0;
-  String _selectedChoice = ''; // Variable to store selected choice index
-  DateTime lastPressed = DateTime.now();
-
-  List<String> choices = [
-    'Allergy and Immunology',
-    'Anesthesiology',
-    'Cardiology',
-    'Dermatology',
-    'Emergency Medicine',
-    'Family Medicine',
-    'Internal Medicine',
-    'Medical Genetics',
-    'Neurology',
-    'Nuclear Medicine',
-    'Obstetrics and Gynaecology',
-    'Ophthalmology',
-    'Pathology',
-    'Paediatrics',
-    'Psychiatry',
-    'Surgery',
-    'Urology',
-  ];
+  String _selectedChoice = ''; // Variable to store selected choice
+  DateTime lastPressed = DateTime.now(); // For detecting double-clicks
 
   @override
   Widget build(BuildContext context) {
@@ -53,24 +32,9 @@ class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
               ),
               const SizedBox(height: 16.0),
               SpecialityList(
-                choices: choices,
+                choices: specialtyChoices,
                 selectedChoice: _selectedChoice,
-                onSelectChoice: (choice) {
-                  final now = DateTime.now();
-                  if (_selectedChoice == choice && now.difference(lastPressed) < const Duration(seconds: 1)) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RegistrationForm(specialty: choice),
-                      ),
-                    );
-                  } else {
-                    setState(() {
-                      _selectedChoice = choice;
-                      lastPressed = now;
-                    });
-                  }
-                },
+                onSelectChoice: handleSpecialtySelection,
               ),
             ],
           ),
@@ -78,62 +42,21 @@ class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
       ),
     );
   }
-}
 
-// Reusable Widget for displaying the list of specialties
-class SpecialityList extends StatelessWidget {
-  final List<String> choices;
-  final String selectedChoice;
-  final Function(String) onSelectChoice;
-
-  const SpecialityList({
-    super.key,
-    required this.choices,
-    required this.selectedChoice,
-    required this.onSelectChoice,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: choices.map((choice) {
-        return SpecialityButton(
-          choice: choice,
-          isSelected: selectedChoice == choice,
-          onPressed: () => onSelectChoice(choice),
-        );
-      }).toList(),
-    );
-  }
-}
-
-// Reusable Widget for each specialty button
-class SpecialityButton extends StatelessWidget {
-  final String choice;
-  final bool isSelected;
-  final VoidCallback onPressed;
-
-  const SpecialityButton({
-    super.key,
-    required this.choice,
-    required this.isSelected,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0), // Space between buttons
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: isSelected ? greenishColor : greyishColor, // Change color when selected
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          shadowColor: blackishColor,
+  void handleSpecialtySelection(String choice) {
+    final now = DateTime.now();
+    if (_selectedChoice == choice && now.difference(lastPressed) < const Duration(seconds: 1)) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => RegistrationForm(specialty: choice),
         ),
-        child: Text(choice),
-      ),
-    );
+      );
+    } else {
+      setState(() {
+        _selectedChoice = choice;
+        lastPressed = now;
+      });
+    }
   }
 }

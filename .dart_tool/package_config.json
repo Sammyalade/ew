@@ -248,6 +248,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "google_fonts",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/google_fonts-6.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "graphs",
       "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/graphs-2.3.2",
       "packageUri": "lib/",
@@ -414,6 +420,48 @@
       "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_platform_interface-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "plugin_platform_interface",
@@ -632,6 +680,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "xdg_directories",
+      "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/xdg_directories-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "yaml",
       "rootUri": "file:///C:/Users/ENVY/AppData/Local/Pub/Cache/hosted/pub.dev/yaml-3.1.2",
       "packageUri": "lib/",
@@ -644,7 +698,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-09-14T02:26:44.095904Z",
+  "generated": "2024-09-16T07:41:11.159937Z",
   "generator": "pub",
   "generatorVersion": "3.4.4",
   "flutterRoot": "file:///C:/Users/ENVY/dev/flutter",

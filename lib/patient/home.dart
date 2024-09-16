@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:health_eaze/patient/book_an_appointment.dart';
 import 'package:health_eaze/patient/doctor_details.dart';
 import 'package:health_eaze/utils/utilities.dart';
@@ -40,11 +41,12 @@ class HomeScreen extends StatelessWidget {
             height: 50,),
           const SizedBox(width: 10,),
           Text('Hi $patientName!',
-            style: const TextStyle(
-              fontSize: 20, 
-              fontWeight: FontWeight.bold,
-              color: black
-            ),
+            style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
+            // style: const TextStyle(
+            //   fontSize: 20,
+            //   fontWeight: FontWeight.bold,
+            //   color: black
+            // ),
           )
         ],
       ),
@@ -78,27 +80,28 @@ class HomeScreen extends StatelessWidget {
             ),
           ]
         ),
-         child: const  Row(
+         child:  Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.calendar_today, 
               color: Colors.white,
               size: 30,
             ),
-             SizedBox(width: 10), 
+             const SizedBox(width: 10),
             Expanded(
               child: Text(
                 'Book an Appointment',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+                style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
+                // style: TextStyle(
+                //   fontSize: 20,
+                //   fontWeight: FontWeight.bold,
+                //   color: Colors.white,
+                // ),
                 textAlign: TextAlign.left,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios,
               color: Colors.white,
                size: 24,
@@ -136,27 +139,28 @@ class HomeScreen extends StatelessWidget {
           ]
         ),
 
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.person_outline,
               color: Colors.white,
               size: 30,
             ),
-            SizedBox(),
+            const SizedBox(),
             Expanded(
               child: Text(
                 'Talk to a Doctor',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+                style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
+                // style: TextStyle(
+                //   fontSize: 20,
+                //   fontWeight: FontWeight.bold,
+                //   color: Colors.white,
+                // ),
                 textAlign: TextAlign.left,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios,
               color: Colors.white,
                size: 24,
