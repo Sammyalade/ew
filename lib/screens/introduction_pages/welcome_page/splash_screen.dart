@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:health_eaze/screens/introduction_pages/welcome_page/welcome_screen.dart';
+import 'package:health_eaze/onboarding/welcome_screen.dart';
+// import '../utils/utilities.dart';
 import '../../../utils/utilities.dart';
 
 class SplashScreen extends StatefulWidget {

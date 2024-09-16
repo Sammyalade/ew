@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:health_eaze/chat/chat_service.dart';
+import 'package:health_eaze/onboarding/splash_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,6 @@ void main() async{
       measurementId: "G-K64J56WPJ1"
     )
   );
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,10 +29,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  const ChatScreen(chatRoomId: 'exampleChatRoomId'),
-      routes: {
-        '/chat': (context) => const ChatScreen(chatRoomId: 'exampleChatRoomId'),
-      },
+      home:  const SplashScreen(),
+      //home:  const ChatScreen(chatRoomId: 'exampleChatRoomId'),
+      //routes: {
+        //'/chat': (context) => const ChatScreen(chatRoomId: 'exampleChatRoomId'),
+      //},    
+      
     );
   }
 }

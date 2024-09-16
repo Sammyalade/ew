@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const DoctorDashboard());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DoctorDashboard extends StatelessWidget {
+  const DoctorDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: const DashboardScreen(),
       routes: {
         '/patients': (context) => const PatientScreen(),
@@ -44,6 +45,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     const double walletBalance = 1234.56;
+    
 
     return Scaffold(
       appBar: AppBar(

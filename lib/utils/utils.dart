@@ -83,3 +83,57 @@ Widget buildSaveButton() {
     ),
   );
 }
+
+
+Widget buildActionButtonWithElevatedButton(
+  IconData icon,
+  String title,
+  String subtitle,
+  Color backgroundColor,
+  Color iconColor, {
+  VoidCallback? onPressed,
+}) {
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: backgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.all(16),
+    ),
+    onPressed: onPressed, // Correctly used here
+    child: Row(
+      children: [
+        Icon(
+          icon,
+          color: iconColor,
+          size: 30,
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                subtitle,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.white70,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
