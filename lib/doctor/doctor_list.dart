@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/utils/filter_page.dart';
-import 'package:health_eaze/utils/search_bar.dart';
+import 'package:health_eaze/widgets/search_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'dart:convert'; // For JSON decoding
@@ -9,6 +9,7 @@ import '../services/url_links.dart';
 import 'doctor_details.dart';
 
 class DoctorListingApp extends StatelessWidget {
+
   const DoctorListingApp({super.key});
 
   @override
@@ -20,7 +21,8 @@ class DoctorListingApp extends StatelessWidget {
 }
 
 class DoctorListingPage extends StatefulWidget {
-  const DoctorListingPage({super.key});
+  final String? specialty;
+  const DoctorListingPage({super.key, this.specialty});
 
   @override
   _DoctorListingPageState createState() => _DoctorListingPageState();
@@ -37,6 +39,7 @@ class _DoctorListingPageState extends State<DoctorListingPage> {
   @override
   void initState() {
     super.initState();
+    _specialty = widget.specialty ?? '';
     _fetchDoctors();
   }
 

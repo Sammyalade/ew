@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:health_eaze/utils/utilities.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../models/doctor.dart';
+
 
 class BookAnAppointment extends StatefulWidget {
-  const BookAnAppointment({super.key});
+  final Doctor? doctor;
+  const BookAnAppointment({super.key, this.doctor});
 
   @override
   State<BookAnAppointment> createState() => _BookAnAppointmentState();
