@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:health_eaze/utils/navigation_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'dart:convert'; // For JSON decoding
@@ -10,6 +9,8 @@ import '../services/url_links.dart';
 import 'doctor_details.dart';
 
 class DoctorListingApp extends StatelessWidget {
+  const DoctorListingApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,6 +20,8 @@ class DoctorListingApp extends StatelessWidget {
 }
 
 class DoctorListingPage extends StatefulWidget {
+  const DoctorListingPage({super.key});
+
   @override
   _DoctorListingPageState createState() => _DoctorListingPageState();
 }
@@ -108,7 +111,7 @@ class DoctorCard extends StatelessWidget {
   final Doctor doctor;
 
 
-  DoctorCard({required this.doctor});
+  const DoctorCard({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {

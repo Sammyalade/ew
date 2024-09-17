@@ -1,15 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../models/doctor.dart';
-import '../utils/navigation_bar.dart';
 
 class DoctorDetailPage extends StatelessWidget {
   final Doctor doctor;
 
-  DoctorDetailPage({required this.doctor});
+  const DoctorDetailPage({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {

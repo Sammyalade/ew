@@ -4,7 +4,6 @@ import 'package:health_eaze/patient/home.dart';
 import 'package:health_eaze/patient/messages.dart';
 import 'package:health_eaze/patient/vitals.dart';
 import 'package:health_eaze/patient/wallet.dart';
-import 'package:health_eaze/utils/navigation_bar.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
 class PatientDashboard extends StatefulWidget {
@@ -46,7 +45,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
           ],
         ),
       ),
-      // bottomNavigationBar: const NavigationMenu(),
+      bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
 
@@ -59,7 +58,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
         });
       },
       backgroundColor: primaryColorBlue,
-      selectedItemColor: primaryColorPink,
+      selectedItemColor: primaryColorBlue,
       unselectedItemColor: black,
       items: const [
         BottomNavigationBarItem(
@@ -75,8 +74,8 @@ class _PatientDashboardState extends State<PatientDashboard> {
           label: 'Messages',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.account_balance_wallet),
-          label: 'Wallet',
+          icon: Icon(Icons.face_6_rounded),
+          label: 'Profile',
         )
       ],
     );
