@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:health_eaze/lab/lab_listing.dart';
 import 'package:health_eaze/patient/book_an_appointment.dart';
 import 'package:health_eaze/patient/upcoming_appointments.dart';
@@ -50,11 +51,12 @@ Widget build(BuildContext context) {
             height: 50,),
           const SizedBox(width: 10,),
           Text('Hi $patientName!',
-            style: const TextStyle(
-              fontSize: 20, 
-              fontWeight: FontWeight.bold,
-              color: black
-            ),
+            style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
+            // style: const TextStyle(
+            //   fontSize: 20,
+            //   fontWeight: FontWeight.bold,
+            //   color: black
+            // ),
           )
         ],
       ),

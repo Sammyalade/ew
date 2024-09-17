@@ -4,6 +4,7 @@ import 'package:health_eaze/patient/home.dart';
 import 'package:health_eaze/patient/messages.dart';
 import 'package:health_eaze/patient/vitals.dart';
 import 'package:health_eaze/patient/wallet.dart';
+import 'package:health_eaze/widgets/navigation_bar.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
 class PatientDashboard extends StatefulWidget {
