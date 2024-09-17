@@ -46,7 +46,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
           ],
         ),
       ),
-      // bottomNavigationBar: const NavigationMenu(),
+      bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
 
@@ -59,7 +59,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
         });
       },
       backgroundColor: primaryColorBlue,
-      selectedItemColor: primaryColorPink,
+      selectedItemColor: primaryColorBlue,
       unselectedItemColor: black,
       items: const [
         BottomNavigationBarItem(
@@ -75,8 +75,8 @@ class _PatientDashboardState extends State<PatientDashboard> {
           label: 'Messages',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.account_balance_wallet),
-          label: 'Wallet',
+          icon: Icon(Icons.face_6_rounded),
+          label: 'Profile',
         )
       ],
     );

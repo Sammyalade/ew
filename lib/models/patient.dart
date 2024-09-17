@@ -32,9 +32,10 @@ class PatientLoginModel extends LoginModel{
   factory PatientLoginModel.fromJson(Map<String, dynamic> json) => _$PatientLoginModelFromJson(json);
   Map<String, dynamic> toJson() => _$PatientLoginModelToJson(this);
 
+  @override
   void goToDashboard(BuildContext context){
     Widget nextScreen;
-    nextScreen = new PatientDashboard(patientLoginModel: this);
+    nextScreen = PatientDashboard(patientLoginModel: this);
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => nextScreen),

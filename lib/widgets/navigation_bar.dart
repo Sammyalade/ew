@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:health_eaze/patient/patient_dashboard.dart'; // Adjust if needed
+// Adjust if needed
 
 
 class NavigationMenu extends StatelessWidget {
@@ -37,7 +37,7 @@ class NavigationController extends  GetxController{
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     // PatientDashboard(),
-    Container(color: Colors.green),
+    // Container(color: Colors.green),
     Container(color: Colors.amber),
     Container(color: Colors.blue),
     Container(color: Colors.pink)

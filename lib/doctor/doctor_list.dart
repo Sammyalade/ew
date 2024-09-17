@@ -10,7 +10,6 @@ import '../services/url_links.dart';
 import 'doctor_details.dart';
 
 class DoctorListingApp extends StatelessWidget {
-
   const DoctorListingApp({super.key});
 
   @override

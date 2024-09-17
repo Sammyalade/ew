@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/doctor/doctor_dashboard.dart';
-import 'package:health_eaze/lab/lab_dashboard.dart';
 import 'package:health_eaze/models/patient.dart';
 import 'package:health_eaze/models/doctor_model.dart';
 import 'package:health_eaze/patient/patient_dashboard.dart';
-import 'package:health_eaze/pharmacy/pharm_dashboard.dart';
 import 'package:health_eaze/services/login_api_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
-import 'dart:convert';
 // Import your color utilities
 
 class LoginScreen extends StatefulWidget {

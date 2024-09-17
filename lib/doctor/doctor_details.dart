@@ -8,7 +8,7 @@ import '../widgets/action_button.dart'; // Import the refactored ActionButton wi
 class DoctorDetailPage extends StatelessWidget {
   final Doctor doctor;
 
-  DoctorDetailPage({required this.doctor});
+  const DoctorDetailPage({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
