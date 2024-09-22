@@ -9,7 +9,7 @@ class ActionButton extends StatelessWidget {
   final Color? iconColor;
   final Function() action;
 
-  const ActionButton({
+  const ActionButton({super.key, 
     required this.icon,
     required this.label,
     required this.content,
@@ -37,7 +37,7 @@ class ActionButton extends StatelessWidget {
               color: iconColor,
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

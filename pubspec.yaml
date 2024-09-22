@@ -27,6 +27,7 @@ dependencies:
   json_annotation: ^4.9.0
   fluttertoast:
   google_fonts:
+  provider: ^6.1.2
 
 
 dev_dependencies:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_eaze/models/patient.dart';
 import 'package:health_eaze/utils/filter_page.dart';
 import 'package:health_eaze/widgets/search_bar.dart';
 import 'package:http/http.dart' as http;
@@ -221,13 +222,13 @@ class DoctorCard extends StatelessWidget {
     return  Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.star, color: Colors.green, size: 16),
-        SizedBox(width: 5),
+        const Icon(Icons.star, color: Colors.green, size: 16),
+        const SizedBox(width: 5),
         Text(
           '5',
           style: GoogleFonts.nunito(color: Colors.green),
         ),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
       ],
     );
   }

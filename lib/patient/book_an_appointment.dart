@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/models/book_appointment_model.dart';
 import 'package:health_eaze/models/doctor.dart';
-import 'package:health_eaze/models/patient.dart';
+import 'package:health_eaze/providers/patient_model_provider.dart';
 import 'package:health_eaze/services/book_appointments_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../models/doctor.dart';
 
 
 class BookAnAppointment extends StatefulWidget {
   final Doctor doctor;
-  final PatientLoginModel patientLoginModel;
 
   const BookAnAppointment({
     super.key, 
     required this.doctor, 
-    required this.patientLoginModel
+  
   });
 
   @override
@@ -26,8 +24,10 @@ class BookAnAppointment extends StatefulWidget {
 class _BookAnAppointmentState extends State<BookAnAppointment> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   final _formKey = GlobalKey<FormState>();
-  late int _patientId;
-  String? _reason;
+  final TextEditingController reasonController = TextEditingController();
+
+  int? patientId;
+  String? reason;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   TimeOfDay? _selectedStartTime;
@@ -36,25 +36,20 @@ class _BookAnAppointmentState extends State<BookAnAppointment> {
   @override
   void initState(){
     super.initState();
-    _patientId = _getPatientId();
+    
+    _getPatientIdFromState();
+    
     
   }
 
-int _getPatientId() {
-  if (widget.patientLoginModel.refreshToken.isNotEmpty) {
-    final patientDetails = widget.patientLoginModel.patientDetails;
-    
-    if (patientDetails != null) {
-      return patientDetails.id;
-    } else {
-      throw Exception('Patient details or ID is null');
-    }
-  } else {
-    throw Exception('Patient not logged in');
-  }
+void _getPatientIdFromState() {
+  final patientProvider = Provider.of<PatientLoginModelProvider>(context, listen: false);
+  final patient = patientProvider.patientLoginModel;
+  final _patientId = patient.patientDetails?.id;
+  patientId = _patientId;
+  print(patientId);
 }
 
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,36 +64,42 @@ int _getPatientId() {
       ),
       body: Padding(
         padding:const EdgeInsets.all(16.0),
+        child: Form(
+        key: _formKey, 
         child: Column(
           children: [
-            buildReasonInput(),
-            const SizedBox(height: 16,),
+            buildNewReasonField(),
+            const SizedBox(height: 16),
             buildCalender(),
             const SizedBox(height: 20),
             buildStartTimePicker(),
             const SizedBox(height: 20),
             buildEndTimePicker(),
             const SizedBox(height: 20),
-            buildSelectedDateAndTime(),
-            const SizedBox(height: 20),
             buildScheduleButton(),
           ],
         ),
       ),
+      ),
     );
   }
 
-  Widget buildReasonInput(){
-    return TextFormField(
-      decoration: const InputDecoration(labelText: 'Reason for appointment'),
-      validator: (value){
-        if(value== null || value.isEmpty){
-          return 'Please enter a reason';
-        }
-         _reason = value;
-        return null;
-      },
-    );
+  Widget buildNewReasonField(){
+     return Material(
+    elevation: 4.0,  
+    borderRadius: BorderRadius.circular(10),  
+    color: Colors.white,  
+    child: TextField(
+      controller: reasonController,
+      decoration: const InputDecoration(
+        labelText: 'Reason for appointment',
+        filled: true,
+        fillColor: Colors.white,  
+        border: InputBorder.none,  
+        contentPadding: EdgeInsets.all(16.0), 
+      ),
+    ),
+  );
   }
 
 
@@ -127,15 +128,11 @@ int _getPatientId() {
            isSameDay(_selectedDay, day),
           onDaySelected: (selectedDay, focusedDay){
           
-            if(selectedDay.isBefore(DateTime.now())){
-              _showDayHasPassedDialog();
-            }else{
-              setState(() {
+            setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
             });
-            }
-            
+                     
           },
           calendarStyle: const CalendarStyle(
             selectedDecoration: BoxDecoration(
@@ -174,31 +171,6 @@ int _getPatientId() {
     );
   }
 
-  void _showDayHasPassedDialog(){
-    showDialog(
-      context: context, 
-      builder: (context){
-        return AlertDialog(
-          title: const Text('Invalid Date'),
-          content: const Text('You cannot schedule appointment on a previous day.'),
-          actions: [
-            TextButton(onPressed: (){
-              Navigator.of(context).pop();
-            },
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.green,
-              foregroundColor: Colors.white, 
-              textStyle: const TextStyle(
-                fontSize: 16, 
-                fontWeight: FontWeight.bold
-              )
-            ),
-            child: const Text('OK'))
-          ],
-        );
-      }
-    );
-  }
 
   void selectTime({required bool isStartTime}) async {
     final TimeOfDay? pickedTime = await showTimePicker(
@@ -209,74 +181,76 @@ int _getPatientId() {
       setState(() {
         if (isStartTime) {
           _selectedStartTime = pickedTime;
-        } else {
+        } else if (_selectedStartTime != null && pickedTime.hour < _selectedStartTime!.hour) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('End time must be after the start time')),
+          );
+        } 
+        else {
           _selectedEndTime = pickedTime;
         }
       });
     }
   }
 
-  Widget buildSelectedDateAndTime(){
-    if (_selectedDay == null) return const SizedBox.shrink();
-    final selectedDate = _selectedDay!.toLocal().toString().split(' ')[0];
-    final selectedTime = _selectedStartTime != null ? _selectedStartTime!.format(context): 'No time selected'; 
-    
-    return Text(
-      'Selected Day : $selectedDate\n Selected Time : $selectedTime',
-      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-      textAlign: TextAlign.center,
+
+   Widget buildScheduleButton() {
+    return ElevatedButton(
+      onPressed: ()=>
+        scheduleAppointment(),
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size(300, 60),
+        textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        backgroundColor: primaryColorBlue,
+        foregroundColor: Colors.white,
+      ),
+      child: const Text('Schedule an Appointment'),
     );
   }
 
-  Widget buildScheduleButton(){
-    return ElevatedButton(onPressed: (){
-      bool condition = _formKey.currentState!.validate() && _selectedDay != null && _selectedStartTime != null && _selectedEndTime != null;
-      if (condition){
-        _scheduleAppointment();
-      }else {
-        ScaffoldMessenger.of(context).showSnackBar( 
-          const SnackBar(content: Text('please select a date and time'),),
-        );
-      }
-    },
-    style: ElevatedButton.styleFrom(
-      minimumSize: const Size(300, 60),
-      textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      backgroundColor: primaryColorBlue,
-      foregroundColor: Colors.white,
-    ),
-     child: const Text('Schedule an Appointment'),);
+   String formatTimeOfDay(TimeOfDay time) {
+    final now = DateTime.now();
+    final dateTime = DateTime(now.year, now.month, now.day, time.hour, time.minute);
+    return "${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}";
   }
+//   String formatTimeOfDay(TimeOfDay time) {
+//   return time.hour.toString().padLeft(2, '0');
+// }
 
-  void _scheduleAppointment() async {
+
+  Future <void> scheduleAppointment() async {
     final selectedDate = _selectedDay!.toLocal().toString().split(' ')[0];
-    final startTime = _selectedStartTime!.format(context);
-    final endTime = _selectedEndTime!.format(context);
+    print(selectedDate);
+    final startTime = formatTimeOfDay(_selectedStartTime!); 
+    final endTime = formatTimeOfDay(_selectedEndTime!);
+    final reason = reasonController.text.trim(); 
+    print('appointment reason: $reason');
 
-    final appointmentModel = AppointmentModel(
-      id: 0, // You might want to handle the ID on the backend side
-      patientId: _patientId.toString(),
-      doctorId: widget.doctor.id.toString(),
-      appointmentDate: selectedDate,
-      status: null,
-      reason: _reason!,
-      startTime: startTime,
-      endTime: endTime,
-    );
-
+    if(reason.isEmpty){
+      showError('Enter a reason');
+      return;
+    }
     try {
-      final bookedAppointment = await BookAppointmentService().bookAppointment(appointmentModel);
+      final bookedAppointment = await BookAppointmentService().bookAppointment( 
+        patientId.toString(), widget.doctor.id.toString(), selectedDate, reason, startTime, endTime);
+        print('appointment is booked: $bookedAppointment.toString()');
       if (bookedAppointment != null) {
-        _showConfirmationDialog();
+        showConfirmationDialog();
       }
     } catch (e) {
+      print('Failed to book appointment:  $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to book appointment: $e')),
       );
     }
   }
+    void showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 
-  void _showConfirmationDialog() {
+  void showConfirmationDialog() {
     final selectedDate = _selectedDay!.toLocal().toString().split(' ')[0];
     final selectedStartTime = _selectedStartTime!.format(context);
     final selectedEndTime = _selectedEndTime!.format(context);

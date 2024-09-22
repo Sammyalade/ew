@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/doctor/doctor_dashboard.dart';
 import 'package:health_eaze/models/patient.dart';
 import 'package:health_eaze/models/doctor_model.dart';
-import 'package:health_eaze/patient/patient_dashboard.dart';
+import 'package:health_eaze/providers/patient_model_provider.dart';
 import 'package:health_eaze/services/login_api_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
+import 'package:provider/provider.dart';
 // Import your color utilities
 
 class LoginScreen extends StatefulWidget {
@@ -145,8 +145,21 @@ class LoginScreenState extends State<LoginScreen> {
     return;
   }
 
+    try {
     final response = await loginApiService.login(email, password);
-    response.goToDashboard(context);
+
+    if (response is PatientLoginModel) {
+      Provider.of<PatientLoginModelProvider>(context, listen: false)
+          .setPatientLoginModel(response);
+
+      response.goToDashboard(context);
+
+    } else if (response is DoctorLoginModel) {
+      response.goToDashboard(context);
+    }
+  } catch (e) {
+    showError('Login failed. Please try again.');
+  }
     
   
 }
@@ -158,22 +171,22 @@ class LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void navigateToDashboard(BuildContext context, dynamic model) {
-    Widget nextScreen;
-     if (model is PatientLoginModel) {
-      nextScreen = PatientDashboard(patientLoginModel: model);
-    } else if (model is DoctorLoginModel) {
-      nextScreen = DoctorDashboard(doctorLoginModel: model);
-    } else {
-      showError('Unknown model type');
-      return;
-    }
+  // void navigateToDashboard(BuildContext context, dynamic model) {
+  //   Widget nextScreen;
+  //    if (model is PatientLoginModel) {
+  //     nextScreen = const PatientDashboard();
+  //   } else if (model is DoctorLoginModel) {
+  //     nextScreen = DoctorDashboard(doctorLoginModel: model);
+  //   } else {
+  //     showError('Unknown model type');
+  //     return;
+  //   }
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => nextScreen),
-    );
-  }
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => nextScreen),
+  //   );
+  // }
 
    
   

@@ -5,7 +5,8 @@ import 'package:health_eaze/widgets/doctor_specialties.dart';
 import 'package:health_eaze/widgets/specialty_select.dart';
 
 class AppointmentPage extends StatelessWidget {
-  const AppointmentPage({super.key});
+        
+  const AppointmentPage({super.key, });
 
   @override
   Widget build(BuildContext context) {

@@ -1,22 +1,28 @@
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:health_eaze/lab/lab_listing.dart';
+import 'package:health_eaze/models/patient.dart';
+import 'package:health_eaze/patient/appointment.dart';
 import 'package:health_eaze/patient/book_an_appointment.dart';
 import 'package:health_eaze/patient/upcoming_appointments.dart';
 import 'package:health_eaze/pharmacy/pharmacyListing.dart';
+import 'package:health_eaze/providers/patient_model_provider.dart';
 import 'package:health_eaze/utils/utilities.dart';
-
+import 'package:provider/provider.dart';
 import '../doctor/doctor_list.dart';
 
 class HomeScreen extends StatelessWidget {
   final String patientName;
+  final PatientLoginModel patientLoginModel;
   final String logo = 'asset/images/logos/sus2.png';
   
-  const HomeScreen({super.key, required this.patientName});
+  const HomeScreen({super.key, required this.patientName, required this.patientLoginModel});
+
+  
 
  @override
 Widget build(BuildContext context) {
+  final patientLoginModel = Provider.of<PatientLoginModelProvider>(context).patientLoginModel;
   return Scaffold(
     backgroundColor: Colors.white.withOpacity(0.9), 
     body: SingleChildScrollView(
@@ -24,7 +30,7 @@ Widget build(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          buildHeader(),
+          buildHeader(patientLoginModel.user.firstName?? 'Patient'),
           const SizedBox(height: 20,),
           buildAppointmentSection(context),
           const SizedBox(height: 20,),
@@ -40,7 +46,7 @@ Widget build(BuildContext context) {
 }
 
 
-    Widget buildHeader(){
+    Widget buildHeader(String patientName){
      return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Row(
@@ -51,12 +57,11 @@ Widget build(BuildContext context) {
             height: 50,),
           const SizedBox(width: 10,),
           Text('Hi $patientName!',
-            style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
-            // style: const TextStyle(
-            //   fontSize: 20,
-            //   fontWeight: FontWeight.bold,
-            //   color: black
-            // ),
+            style: const TextStyle(
+              fontSize: 20, 
+              fontWeight: FontWeight.bold,
+              color: black
+            ),
           )
         ],
       ),
@@ -65,7 +70,7 @@ Widget build(BuildContext context) {
 
   Widget buildAppointmentSection(BuildContext context){
     return GestureDetector(
-      // onTap: () => _navigateTo(context, const BookAnAppointment()),
+      onTap: () => _navigateTo(context, const AppointmentPage()),
       child: _buildBookAppointmentContainer(context, 'Book an Appointment', Icons.calendar_today) ,
     );
   }
