@@ -16,8 +16,8 @@ class ToastUtil {
         mainAxisSize: MainAxisSize.min,
         children: [
           icon,
-          SizedBox(width: 12.0),
-          Text(message, style: TextStyle(color: Colors.white)),
+          const SizedBox(width: 12.0),
+          Text(message, style: const TextStyle(color: Colors.white)),
         ],
       ),
     );
@@ -25,7 +25,7 @@ class ToastUtil {
     fToast.showToast(
       child: toast,
       gravity: ToastGravity.TOP,
-      toastDuration: Duration(seconds: 2),
+      toastDuration: const Duration(seconds: 2),
       positionedToastBuilder: (context, child) {
         return Positioned(
           top: 20.0, // Set the custom top position

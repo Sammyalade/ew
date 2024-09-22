@@ -6,28 +6,28 @@ part 'book_appointment_model.g.dart';
 class AppointmentModel{
   final int id;
   @JsonKey(name: 'patient_id')
-  final String patientId;
+  final String patient;
   @JsonKey(name: 'doctor_id')
-  final String doctorId;
+  final String doctor;
   @JsonKey(name: 'appointment_date')
-  final String appointmentDate;
+  final String appointment_date;
   final String? status;
   final String reason;
   @JsonKey(name: 'start_time')
-  final String startTime;
+  final String start_time;
   @JsonKey(name: 'end_time')
-  final String endTime;
+  final String end_time;
 
 
   AppointmentModel({
     required this.id,
-    required this.patientId,
-    required this.doctorId,
-    required this.appointmentDate,
+    required this.patient,
+    required this.doctor,
+    required this.appointment_date,
     required this.status,
     required this.reason,
-    required this.startTime,
-    required this.endTime,
+    required this.start_time,
+    required this.end_time,
   });
 
 

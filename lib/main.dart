@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/onboarding/splash_screen.dart';
 
-import 'package:health_eaze/patient/appointment.dart';
-import 'package:health_eaze/patient/patient_dashboard.dart';
+import 'package:health_eaze/providers/patient_model_provider.dart';
+import 'package:provider/provider.dart';
 
-import 'doctor/doctor_list.dart';
-import 'doctor/doctor_sign_up.dart';
-import 'models/patient.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+     MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => PatientLoginModelProvider()
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,11 +31,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home:  const SplashScreen(),
+      home:  const SplashScreen(),
       // home: DoctorListingPage()
       // home: DoctorSpecialityChoices(),
       // home: PatientDashboard(patientLoginModel: PatientLoginModel.defaultModel(),),
-      home: AppointmentPage(),
+      // home: AppointmentPage(),
     );
   }
 }

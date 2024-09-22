@@ -1,25 +1,43 @@
 import 'dart:convert';
 
-import 'package:health_eaze/models/book_appointment_model.dart';
+import 'package:health_eaze/services/url_links.dart';
 import 'package:http/http.dart' as http;
 
 
 class BookAppointmentService {
-  final String bookAppointmentUrl = 'http://127.0.0.1:8000/appointments/appointment/';
+  final String bookAppointmentUrl = '$BASE_URL/appointments/appointment/';
 
-  Future<AppointmentModel?> bookAppointment(AppointmentModel appointmentModel) async {
+  Future<Map<String, dynamic>?> bookAppointment(String patientId, String doctorId, String appointmentDate, String reason, String startTime, String endTime) async {
     try{
       final response = await http.post(
         Uri.parse(bookAppointmentUrl),
         headers: {
           'Content-Type': 'application/json'
         }, 
-        body: jsonEncode(appointmentModel.toJson()),
+        body:  json.encode({
+          'patient': patientId,
+          'doctor': doctorId,
+          'appointment_date': appointmentDate,
+          'reason': reason,
+          'start_time': startTime,
+          'end_time': endTime,
+        }),
+       
       );
+       print('in service');
+       print(startTime);
+        print(endTime);
+        print(appointmentDate);
+        print(reason);
+        print('doctorId: $doctorId');
+        print('patientId: $patientId');
+
+
 
       if(response.statusCode == 200 || response.statusCode == 201){
         final Map<String, dynamic> responseBody = jsonDecode(response.body);
-        return  AppointmentModel.fromJson(responseBody);
+        print(responseBody);
+        return  responseBody;
       }
       else if(response.statusCode == 400){
         throw Exception('Bad request: ${response.body}');
@@ -35,7 +53,6 @@ class BookAppointmentService {
       }
     }
     catch(e){
-      print(e);
       throw Exception('Failed to book appointment: ${e.toString()}');
     }
   }

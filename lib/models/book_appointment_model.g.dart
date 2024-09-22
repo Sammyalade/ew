@@ -9,21 +9,21 @@ part of 'book_appointment_model.dart';
 AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
     AppointmentModel(
       id: (json['id'] as num).toInt(),
-      patientId: json['patient_id'] as String,
-      doctorId: json['doctor_id'] as String,
-      appointmentDate: json['appointment_date'] as String,
+      patient: json['patient_id'] as String,
+      doctor: json['doctor_id'] as String,
+      appointment_date: json['appointment_date'] as String,
       status: json['status'] as String?,
       reason: json['reason'] as String,
-      startTime: json['start_time'] as String,
-      endTime: json['end_time'] as String,
+      start_time: json['start_time'] as String,
+      end_time: json['end_time'] as String,
     );
 
 Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) {
   final val = <String, dynamic>{
     'id': instance.id,
-    'patient_id': instance.patientId,
-    'doctor_id': instance.doctorId,
-    'appointment_date': instance.appointmentDate,
+    'patient_id': instance.patient,
+    'doctor_id': instance.doctor,
+    'appointment_date': instance.appointment_date,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -34,7 +34,7 @@ Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) {
 
   writeNotNull('status', instance.status);
   val['reason'] = instance.reason;
-  val['start_time'] = instance.startTime;
-  val['end_time'] = instance.endTime;
+  val['start_time'] = instance.start_time;
+  val['end_time'] = instance.end_time;
   return val;
 }

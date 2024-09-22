@@ -6,6 +6,8 @@ import 'package:health_eaze/utils/toast_util.dart';
 import 'package:health_eaze/widgets/doctor_specialties.dart';
 
 class FilterPage extends StatefulWidget {
+  const FilterPage({super.key});
+
   @override
   _FilterPageState createState() => _FilterPageState();
 }
@@ -14,7 +16,7 @@ class _FilterPageState extends State<FilterPage> {
   // Form controllers
   String? _selectedSpecialty;
   String? _rating;
-  TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   RangeValues _feeRange = RangeValues(1000, 10000); // Consultation fee range
 
   final List<String> _specialties = specialtyChoices;
@@ -84,7 +86,7 @@ class _FilterPageState extends State<FilterPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                    'Consultation Fee: \₦${_feeRange.start.round()} - \₦${_feeRange.end.round()}'),
+                    'Consultation Fee: ₦${_feeRange.start.round()} - ₦${_feeRange.end.round()}'),
                 RangeSlider(
                   values: _feeRange,
                   min: 1000,
