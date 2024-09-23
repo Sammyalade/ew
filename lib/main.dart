@@ -17,8 +17,6 @@ import 'package:health_eaze/patient/appointment.dart';
 import 'package:health_eaze/patient/home.dart';
 import 'package:health_eaze/patient/patient_dashboard.dart';
 
-
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -37,7 +35,12 @@ Future<void> main() async {
         ChangeNotifierProvider(
           create: (context) => PatientProvider(),
         ),
-        ChangeNotifierProvider(create: (context) => UserModelProvider())
+        ChangeNotifierProvider(
+          create: (context) => UserModelProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PatientLoginModelProvider(),
+        )
       ],
       child: const MyApp(),
     ),
@@ -58,7 +61,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  const SplashScreen(),
+      home: const SplashScreen(),
       // home: DoctorListingPage()
       // home: DoctorSpecialityChoices(),
       // home: PatientDashboard(patientLoginModel: PatientLoginModel.defaultModel(),),
