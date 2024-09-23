@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "543181031833",
+    "project_id": "healthease-c8480",
+    "storage_bucket": "healthease-c8480.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543181031833:android:7c298ac858a2fbda2b6b08",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ800Woa1hPvQRfKKUi99-VgfsHWM5Xc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
