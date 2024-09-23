@@ -16,6 +16,7 @@ PatientLoginModel _$PatientLoginModelFromJson(Map<String, dynamic> json) =>
           : PatientDetails.fromJson(
               json['patient_details'] as Map<String, dynamic>),
       appointments: json['appointments'] as List<dynamic>?,
+      // firebaseToken: json['firebase_token'],
     );
 
 Map<String, dynamic> _$PatientLoginModelToJson(PatientLoginModel instance) {

@@ -17,13 +17,13 @@ class HomeScreen extends StatelessWidget {
   
   const HomeScreen({super.key, required this.patientName, required this.patientLoginModel});
 
-  
+
 
  @override
 Widget build(BuildContext context) {
   final patientLoginModel = Provider.of<PatientLoginModelProvider>(context).patientLoginModel;
   return Scaffold(
-    backgroundColor: Colors.white.withOpacity(0.9), 
+    backgroundColor: Colors.white.withOpacity(0.9),
     body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +57,7 @@ Widget build(BuildContext context) {
           const SizedBox(width: 10,),
           Text('Hi $patientName!',
             style: const TextStyle(
-              fontSize: 20, 
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: black
             ),

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:health_eaze/models/patient.dart';
 import 'package:health_eaze/models/doctor_model.dart';
 import 'package:health_eaze/providers/patient_model_provider.dart';
+import 'package:health_eaze/patient/patient_dashboard.dart';
+import 'package:health_eaze/pharmacy/pharm_dashboard.dart';
+import 'package:health_eaze/services/auth_service.dart';
 import 'package:health_eaze/services/login_api_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +22,7 @@ class LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final LoginApiService loginApiService = LoginApiService();
+  final AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +150,7 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
     try {
-    final response = await loginApiService.login(email, password);
+    final response = await loginApiService.login(email, password, context);
 
     if (response is PatientLoginModel) {
       Provider.of<PatientLoginModelProvider>(context, listen: false)
@@ -160,7 +164,9 @@ class LoginScreenState extends State<LoginScreen> {
   } catch (e) {
     showError('Login failed. Please try again.');
   }
-    
+    final response = await loginApiService.login(email, password, context);
+    response.goToDashboard(context);
+
   
 }
 

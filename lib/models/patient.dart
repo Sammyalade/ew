@@ -9,7 +9,7 @@ part 'patient.g.dart';
 
 @JsonSerializable(includeIfNull: false)
 class PatientLoginModel extends LoginModel {
- 
+
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
   final User user; 
@@ -36,7 +36,7 @@ class PatientLoginModel extends LoginModel {
   factory PatientLoginModel.fromJson(Map<String, dynamic> json) => _$PatientLoginModelFromJson(json);
   Map<String, dynamic> toJson() => _$PatientLoginModelToJson(this);
 
- 
+
 
 
   @override
@@ -49,5 +49,5 @@ class PatientLoginModel extends LoginModel {
     );
   }
 
- 
+
 }
