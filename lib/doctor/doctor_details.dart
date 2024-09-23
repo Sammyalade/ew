@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:health_eaze/models/patient.dart';
-import 'package:provider/provider.dart';
 import '../models/doctor.dart';
 import '../patient/book_an_appointment.dart';
 import '../widgets/info_card.dart'; 

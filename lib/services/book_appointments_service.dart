@@ -24,16 +24,7 @@ class BookAppointmentService {
         }),
        
       );
-       print('in service');
-       print(startTime);
-        print(endTime);
-        print(appointmentDate);
-        print(reason);
-        print('doctorId: $doctorId');
-        print('patientId: $patientId');
-
-
-
+      
       if(response.statusCode == 200 || response.statusCode == 201){
         final Map<String, dynamic> responseBody = jsonDecode(response.body);
         print(responseBody);

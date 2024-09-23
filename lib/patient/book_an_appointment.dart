@@ -45,9 +45,8 @@ class _BookAnAppointmentState extends State<BookAnAppointment> {
 void _getPatientIdFromState() {
   final patientProvider = Provider.of<PatientLoginModelProvider>(context, listen: false);
   final patient = patientProvider.patientLoginModel;
-  final _patientId = patient.patientDetails?.id;
-  patientId = _patientId;
-  print(patientId);
+  final gottenPatientId = patient.patientDetails?.id;
+  patientId = gottenPatientId;
 }
 
   @override
@@ -220,11 +219,9 @@ void _getPatientIdFromState() {
 
   Future <void> scheduleAppointment() async {
     final selectedDate = _selectedDay!.toLocal().toString().split(' ')[0];
-    print(selectedDate);
     final startTime = formatTimeOfDay(_selectedStartTime!); 
     final endTime = formatTimeOfDay(_selectedEndTime!);
     final reason = reasonController.text.trim(); 
-    print('appointment reason: $reason');
 
     if(reason.isEmpty){
       showError('Enter a reason');
@@ -233,12 +230,10 @@ void _getPatientIdFromState() {
     try {
       final bookedAppointment = await BookAppointmentService().bookAppointment( 
         patientId.toString(), widget.doctor.id.toString(), selectedDate, reason, startTime, endTime);
-        print('appointment is booked: $bookedAppointment.toString()');
       if (bookedAppointment != null) {
         showConfirmationDialog();
       }
     } catch (e) {
-      print('Failed to book appointment:  $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to book appointment: $e')),
       );

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:health_eaze/lab/lab_listing.dart';
 import 'package:health_eaze/models/patient.dart';
 import 'package:health_eaze/patient/appointment.dart';
-import 'package:health_eaze/patient/book_an_appointment.dart';
 import 'package:health_eaze/patient/upcoming_appointments.dart';
 import 'package:health_eaze/pharmacy/pharmacyListing.dart';
 import 'package:health_eaze/providers/patient_model_provider.dart';

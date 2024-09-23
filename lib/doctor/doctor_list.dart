@@ -65,7 +65,7 @@ class _DoctorListingPageState extends State<DoctorListingPage> {
   Future<void> openFilterPage() async {
     final filters = await Navigator.push<Map<String, dynamic>>(
       context,
-      MaterialPageRoute(builder: (context) => FilterPage()),
+      MaterialPageRoute(builder: (context) => const FilterPage()),
     );
 
     if (filters != null) {
