@@ -15,7 +15,7 @@ import '../widgets/action_button.dart'; // Import the refactored ActionButton wi
 class DoctorDetailPage extends StatelessWidget {
   final Doctor doctor;
 
-  DoctorDetailPage({required this.doctor});
+  const DoctorDetailPage({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,14 @@ class DoctorDetailPage extends StatelessWidget {
         style: GoogleFonts.nunito(),
       )),
       body: ListView(
-        padding: EdgeInsets.all(20.0),
+        padding: const  EdgeInsets.all(20.0),
         children: <Widget>[
           buildDoctorHeader(),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           buildDoctorInfoRow(),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           buildAboutSection(),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           buildCommunicationSection(context),
         ],
       ),
@@ -44,11 +44,11 @@ class DoctorDetailPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        CircleAvatar(
+        const CircleAvatar(
           radius: 50,
           backgroundImage: AssetImage('assets/doctor_avatar.png'),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           '${doctor.userProfile.firstName} ${doctor.userProfile.lastName}',
           style: GoogleFonts.nunito(fontSize: 24, fontWeight: FontWeight.bold),
@@ -99,7 +99,7 @@ class DoctorDetailPage extends StatelessWidget {
           'About Doctor',
           style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           'Dr. ${doctor.userProfile.firstName} ${doctor.userProfile.lastName} is a top specialist. He has achieved several awards and recognition for his contribution and service in his field. He is available for private consultation.',
           style: GoogleFonts.nunito(fontSize: 16),
@@ -116,7 +116,7 @@ class DoctorDetailPage extends StatelessWidget {
           'Communication',
           style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         ActionButton(
           icon: Icons.calendar_month_rounded,
           label: 'Book Appointment',
@@ -124,12 +124,13 @@ class DoctorDetailPage extends StatelessWidget {
           backgroundColor: Colors.orange[100],
           iconColor: Colors.orange,
           action: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => BookAnAppointment(doctor: doctor),
-              ),
-            );
+           Navigator.push(
+  context,
+  MaterialPageRoute(
+   builder: (context) => BookAnAppointment(doctor: doctor),
+  ),
+);
+
           },
         ),
         const SizedBox(height: 10),
@@ -154,7 +155,7 @@ class DoctorDetailPage extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ActionButton(
           icon: Icons.phone,
           label: 'Audio Call',
@@ -165,7 +166,7 @@ class DoctorDetailPage extends StatelessWidget {
             // Handle Audio Call
           },
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ActionButton(
           icon: Icons.videocam,
           label: 'Video Call',

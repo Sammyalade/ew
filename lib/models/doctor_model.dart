@@ -47,6 +47,7 @@ class DoctorLoginModel extends LoginModel{
       },
     };
   }
+  @override
   void goToDashboard(BuildContext context){
 
     print("doctors dashboard");

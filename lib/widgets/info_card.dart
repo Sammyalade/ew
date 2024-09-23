@@ -8,7 +8,7 @@ class InfoCard extends StatelessWidget {
   final Color? backgroundColor;
   final Color iconColor;
 
-  const InfoCard({
+  const InfoCard({super.key, 
     required this.value,
     required this.label,
     required this.icon,
@@ -27,11 +27,11 @@ class InfoCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 3,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -40,7 +40,7 @@ class InfoCard extends StatelessWidget {
             height: 70,
             decoration: BoxDecoration(
               color: backgroundColor,
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
             ),
             child: Icon(
               icon,
@@ -48,7 +48,7 @@ class InfoCard extends StatelessWidget {
               size: 30,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             value,
             style: GoogleFonts.nunito(
@@ -56,7 +56,7 @@ class InfoCard extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             label,
             style: GoogleFonts.nunito(
