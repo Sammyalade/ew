@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_eaze/patient/appointment.dart';
 import 'package:health_eaze/patient/book_an_appointment.dart';
 import 'package:health_eaze/patient/doctor_details.dart';
 import 'package:health_eaze/utils/utilities.dart';
@@ -59,7 +60,8 @@ class HomeScreen extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context, MaterialPageRoute(
-            builder: (context)=> const BookAnAppointment(),
+            // builder: (context)=> const BookAnAppointment(),
+          builder: (context)=> const AppointmentPage(),
           ),
         );
       },

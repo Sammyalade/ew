@@ -1,9 +1,15 @@
 import 'dart:convert';
-import 'dart:developer';
+import 'dart:developer';import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:health_eaze/services/url_links.dart';
 import 'package:http/http.dart' as http;
 
+import 'auth_service.dart';
+
 class SignUpService {
-  final Uri signUpUrl = Uri.parse('http://127.0.0.1:8000/auth/users/');
+  final AuthService _authService = AuthService();
+  final Uri signUpUrl = Uri.parse('$BASE_URL/auth/users/');
 
   Future<void> signUp({
     required String firstName,
@@ -32,6 +38,22 @@ class SignUpService {
 
       if (response.statusCode == 201 || response.statusCode==200) {
         log('Sign-up successful: ${response.body}');
+        // Sign up the user in Firebase Authentication
+        UserCredential credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+
+        await FirebaseChatCore.instance.createUserInFirestore(
+          types.User(
+            id: credential.user!.uid,  // Firebase UID
+            firstName: firstName,
+            lastName: lastName,
+            imageUrl: 'https://i.pravatar.cc/300', // Default avatar, you can change this
+          ),
+        );
+
+        print('Firebase and Firestore setup completed successfully.');
         print('Sign-up successful: ${response.body}');
       } else {
         log('Error Status: ${response.statusCode}');

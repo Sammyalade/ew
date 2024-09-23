@@ -1,7 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_eaze/messages/chat_page.dart';
+import 'package:health_eaze/providers/user_provider.dart';
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:health_eaze/services/chat_service.dart';
+import 'package:provider/provider.dart';
 import '../models/doctor.dart';
 import '../patient/book_an_appointment.dart';
+import '../providers/patient_provider.dart';
 import '../widgets/info_card.dart'; // Import the refactored InfoCard widget
 import '../widgets/action_button.dart'; // Import the refactored ActionButton widget
 
@@ -14,12 +21,10 @@ class DoctorDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            '${doctor.userProfile.firstName} ${doctor.userProfile.lastName}',
-          style: GoogleFonts.nunito(),
-        )
-
-      ),
+          title: Text(
+        '${doctor.userProfile.firstName} ${doctor.userProfile.lastName}',
+        style: GoogleFonts.nunito(),
+      )),
       body: ListView(
         padding: EdgeInsets.all(20.0),
         children: <Widget>[
@@ -127,7 +132,7 @@ class DoctorDetailPage extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ActionButton(
           icon: Icons.message,
           label: 'Messaging',
@@ -135,7 +140,18 @@ class DoctorDetailPage extends StatelessWidget {
           backgroundColor: Colors.pink[50],
           iconColor: Colors.pink,
           action: () {
-            // Handle Messaging
+            final patientProvider =
+                Provider.of<PatientProvider>(context, listen: false);
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChatPage(
+                  patientId: patientProvider.patient.user.id.toString(),
+                  doctorId: doctor.userProfile.id.toString(),
+                ),
+              ),
+            );
           },
         ),
         SizedBox(height: 10),

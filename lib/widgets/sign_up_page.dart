@@ -3,6 +3,7 @@ import 'package:health_eaze/doctor/doctor_sign_up.dart';
 import 'package:health_eaze/lab/lab_dashboard.dart';
 import 'package:health_eaze/patient/patient_dashboard.dart';
 import 'package:health_eaze/pharmacy/pharm_dashboard.dart';
+import 'package:health_eaze/services/auth_service.dart';
 import 'package:health_eaze/services/sign_up_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
 import 'package:health_eaze/widgets/sign_in_page.dart';
@@ -17,6 +18,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   String selectedRole = 'PATIENT';
   final SignUpService signUpService = SignUpService();
+  final AuthService authService = AuthService();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
@@ -239,6 +241,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               password: password,
               role: role,
             );
+
+            await authService.signUp(email, password);
 
             if (mounted) {
               await _showDialog(context, 'Success', 'Sign up successful');

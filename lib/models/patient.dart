@@ -15,9 +15,12 @@ class PatientLoginModel extends LoginModel{
   @JsonKey(name: 'patient_details')
   PatientDetails? patientDetails;
   final List<dynamic> appointments;
+  @JsonKey(name: 'firebase_token')
+  final String firebaseToken;
 
    PatientLoginModel({
     required this.refreshToken,
+     required this.firebaseToken,
     required this.user,
     this.patientDetails,
     List<dynamic>? appointments, 
@@ -26,7 +29,8 @@ class PatientLoginModel extends LoginModel{
   PatientLoginModel.defaultModel()
       : refreshToken = '',
         user = User.defaultUser(), 
-        patientDetails = PatientDetails.defaultProfile(), 
+        patientDetails = PatientDetails.defaultProfile(),
+        firebaseToken = '',
         appointments = [];
   
   factory PatientLoginModel.fromJson(Map<String, dynamic> json) => _$PatientLoginModelFromJson(json);

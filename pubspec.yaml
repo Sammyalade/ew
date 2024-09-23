@@ -27,6 +27,15 @@ dependencies:
   json_annotation: ^4.9.0
   fluttertoast:
   google_fonts:
+  flutter_chat_ui: ^1.6.15
+  open_filex: ^4.5.0
+  uuid: ^4.5.0
+  firebase_core: ^3.4.1
+  firebase_auth: ^5.2.1
+  flutter_firebase_chat_core: ^1.6.8
+  cloud_firestore: ^5.4.1
+  provider: ^6.1.2
+
 
 
 dev_dependencies:
