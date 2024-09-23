@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/models/patient.dart';
 import 'package:health_eaze/patient/home.dart';
 import 'package:health_eaze/patient/messages.dart';
 import 'package:health_eaze/patient/vitals.dart';
 import 'package:health_eaze/patient/wallet.dart';
 import 'package:health_eaze/providers/patient_model_provider.dart';
-import 'package:health_eaze/widgets/navigation_bar.dart';
 import 'package:health_eaze/utils/utilities.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:health_eaze/utils/toast_util.dart';
 import 'package:health_eaze/widgets/doctor_specialties.dart';
 
