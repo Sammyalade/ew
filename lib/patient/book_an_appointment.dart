@@ -35,11 +35,8 @@ class _BookAnAppointmentState extends State<BookAnAppointment> {
 
   @override
   void initState(){
-    super.initState();
-    
+    super.initState();   
     _getPatientIdFromState();
-    
-    
   }
 
 void _getPatientIdFromState() {
@@ -62,23 +59,25 @@ void _getPatientIdFromState() {
         ),centerTitle: true,
       ),
       body: Padding(
-        padding:const EdgeInsets.all(16.0),
-        child: Form(
-        key: _formKey, 
-        child: Column(
-          children: [
-            buildNewReasonField(),
-            const SizedBox(height: 16),
-            buildCalender(),
-            const SizedBox(height: 20),
-            buildStartTimePicker(),
-            const SizedBox(height: 20),
-            buildEndTimePicker(),
-            const SizedBox(height: 20),
-            buildScheduleButton(),
-          ],
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                buildNewReasonField(),
+                const SizedBox(height: 16),
+                buildCalender(),
+                const SizedBox(height: 20),
+                buildStartTimePicker(),
+                const SizedBox(height: 20),
+                buildEndTimePicker(),
+                const SizedBox(height: 20),
+                buildScheduleButton(),
+              ],
+            ),
+          ),
         ),
-      ),
       ),
     );
   }

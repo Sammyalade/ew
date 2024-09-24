@@ -1,14 +1,16 @@
-// doctor_model.dart
 import 'package:flutter/material.dart';
 import 'package:health_eaze/models/login_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'user_model.dart'; // Import the User model
-
+import 'user_model.dart'; 
+@JsonSerializable(includeIfNull: false)
 class DoctorLoginModel extends LoginModel{
+  @JsonKey(name: 'refresh_token')
   final String refreshToken;
-  final User user; // Use the imported User model
+  final User user; 
   final List<dynamic> appointments;
   final List<dynamic> notifications;
+  @JsonKey(name: 'firebase_token')
   final String firebaseToken;
 
   DoctorLoginModel({
