@@ -3,7 +3,7 @@ import 'package:health_eaze/doctor/availability.dart';
 import 'package:health_eaze/doctor/home.dart';
 import 'package:health_eaze/doctor/messages.dart';
 import 'package:health_eaze/doctor/wallet.dart';
-import 'package:health_eaze/models/doctor_model.dart';
+import 'package:health_eaze/models/doctor_login_model.dart';
 import 'package:health_eaze/utils/utilities.dart';
 
 class DoctorDashboard extends StatefulWidget {
@@ -60,7 +60,7 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
           });
         },
         backgroundColor: primaryColorBlue,
-        selectedItemColor: primaryColorPink,
+        selectedItemColor: primaryColorBlue,
         unselectedItemColor: black,
         items: const[
           BottomNavigationBarItem(

@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:health_eaze/doctor/doctor_dashboard.dart';
+import 'package:health_eaze/models/doctor_login_model.dart';
 import 'package:health_eaze/utils/form_fields.dart';
 import 'package:health_eaze/doctor/qualification_form.dart';
 import 'package:health_eaze/doctor/registration_details.dart';
 import 'package:health_eaze/utils/utils.dart';
 import 'package:health_eaze/utils/image_picker.dart';
 // import 'doctor_dashboard.dart';
-import '../dashboard/dashboard.dart';
 import 'dart:io';
 
 class RegistrationForm extends StatefulWidget {
@@ -156,7 +157,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   context,
                   greenishColor,
                   'Submit',
-                  (context) => DoctorDashboard(),
+                  (context) => DoctorDashboard(doctorLoginModel: DoctorLoginModel.defaultModel() ,),
                 ),
                 SizedBox(height: 10)
               ],

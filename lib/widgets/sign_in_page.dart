@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_eaze/models/patient.dart';
-import 'package:health_eaze/models/doctor_model.dart';
+import 'package:health_eaze/models/doctor_login_model.dart';
 import 'package:health_eaze/providers/patient_model_provider.dart';
 import 'package:health_eaze/patient/patient_dashboard.dart';
 import 'package:health_eaze/pharmacy/pharm_dashboard.dart';

@@ -1,14 +1,20 @@
-import 'package:health_eaze/models/UserProfile.dart';
 import 'package:health_eaze/models/user_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+@JsonSerializable(includeIfNull: false)
 class Doctor {
   int id;
+  @JsonKey(name: 'user_profile')
   User userProfile;
   String signature;
+  @JsonKey(name: 'registration_number')
   String registrationNumber;
+  @JsonKey(name: 'registration_council')
   String registrationCouncil;
+  @JsonKey(name: 'registration_year')
   String registrationYear;
   String specialty;
+  @JsonKey(name: 'consultation_fee')
   int consultationFee;
   String qualification;
   String college;
@@ -49,26 +55,4 @@ class Doctor {
         endYear = "",
         isAvailable = false,
         rating = 3.0;
-
-
-  factory Doctor.fromJson(Map<String, dynamic> json) {
-    return Doctor(
-      id: json['id'] ?? 0,  
-      userProfile: json['user_profile'] != null 
-        ? User.fromJson(json['user_profile']) 
-        : User.defaultUser(),  
-      signature: json['signature'] ?? 'N/A',  
-      registrationNumber: json['registration_number'] ?? 'N/A',  
-      registrationCouncil: json['registration_council'] ?? 'N/A',  
-      registrationYear: json['registration_year'] ?? 'N/A',  
-      specialty: json['specialty'] ?? 'General',  
-      consultationFee: json['consultation_fee'] ?? 0, 
-      qualification: json['qualification'] ?? 'Unknown',  
-      college: json['college'] ?? 'Unknown',  
-      startYear: json['start_year'] ?? 'N/A',  
-      endYear: json['end_year'] ?? 'N/A',  
-      isAvailable: json['is_available'] ?? false,  
-      rating: json['rating'] ?? 0,
-    );
-  }
 }

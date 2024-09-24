@@ -6,7 +6,7 @@ import 'package:health_eaze/services/auth_service.dart';
 import 'package:health_eaze/services/url_links.dart';
 import 'package:http/http.dart' as http;
 import 'package:health_eaze/models/patient.dart';
-import 'package:health_eaze/models/doctor_model.dart';
+import 'package:health_eaze/models/doctor_login_model.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/patient_provider.dart';
@@ -30,7 +30,6 @@ class LoginApiService {
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseBody = json.decode(response.body);
         var user = await authService.signInWithCustomToken(responseBody['firebase_token']);
-        print("User is not working well $user");
 
         var role = responseBody['user']['role'];
         if (role == 'PATIENT') {
@@ -52,7 +51,6 @@ class LoginApiService {
         throw Exception('Failed to log in: Server error');
       }
     } catch (e) {
-      print(e);
       throw Exception('Failed to login: ${e.toString()}');
     }
   }

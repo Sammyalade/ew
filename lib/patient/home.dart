@@ -29,7 +29,7 @@ Widget build(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          buildHeader(patientLoginModel.user.firstName?? 'Patient'),
+          buildHeader(patientLoginModel.user.firstName),
           const SizedBox(height: 20,),
           buildAppointmentSection(context),
           const SizedBox(height: 20,),
