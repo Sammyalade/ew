@@ -33,6 +33,25 @@ class Doctor {
     required this.rating,
   });
 
+  factory Doctor.defaultDoctor() {
+    return Doctor(
+      id: 0,
+      userProfile: UserProfile.defaultProfile(),  // Default user profile
+      signature: 'N/A',
+      registrationNumber: 'N/A',
+      registrationCouncil: 'N/A',
+      registrationYear: 'N/A',
+      specialty: 'General',
+      consultationFee: 0,
+      qualification: 'Unknown',
+      college: 'Unknown',
+      startYear: 'N/A',
+      endYear: 'N/A',
+      isAvailable: false,
+      rating: 0.0,
+    );
+  }
+
   factory Doctor.fromJson(Map<String, dynamic> json) {
     return Doctor(
       id: json['id'] ?? 0,  // Fallback to 0 if null
