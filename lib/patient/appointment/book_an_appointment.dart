@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/models/book_appointment_model.dart';
 import 'package:health_eaze/models/doctor.dart';
 import 'package:health_eaze/providers/patient_model_provider.dart';
 import 'package:health_eaze/services/book_appointments_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../../providers/appointment_provider.dart';
 
 
 
@@ -232,6 +235,8 @@ void _getPatientIdFromState() {
         patientId.toString(), widget.doctor.id.toString(), selectedDate, reason, startTime, endTime);
       if (bookedAppointment != null) {
         showConfirmationDialog();
+        final provider = Provider.of<AppointmentProvider>(context, listen: false);
+        provider.setAppointment(AppointmentModel.fromJson(bookedAppointment));
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

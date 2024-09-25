@@ -1,3 +1,4 @@
+import 'package:health_eaze/models/patient.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'book_appointment_model.g.dart';
@@ -30,8 +31,18 @@ class AppointmentModel{
     required this.end_time,
   });
 
+  AppointmentModel.defaultModel()
+      : id = 0,
+        patient = '',
+        doctor = '',
+        appointment_date = '',
+        status = '',
+        reason = '',
+        start_time = '',
+        end_time = '';
 
-factory AppointmentModel.fromJson(Map<String, dynamic> json) =>
+
+  factory AppointmentModel.fromJson(Map<String, dynamic> json) =>
       _$AppointmentModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$AppointmentModelToJson(this);

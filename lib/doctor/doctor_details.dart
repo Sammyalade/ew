@@ -7,7 +7,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:health_eaze/services/chat_service.dart';
 import 'package:provider/provider.dart';
 import '../models/doctor.dart';
-import '../patient/book_an_appointment.dart';
+import '../patient/appointment/book_an_appointment.dart';
 import '../providers/patient_provider.dart';
 import '../widgets/info_card.dart'; // Import the refactored InfoCard widget
 import '../widgets/action_button.dart'; // Import the refactored ActionButton widget
@@ -26,7 +26,7 @@ class DoctorDetailPage extends StatelessWidget {
         style: GoogleFonts.nunito(),
       )),
       body: ListView(
-        padding: const  EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         children: <Widget>[
           buildDoctorHeader(),
           const SizedBox(height: 20),
@@ -124,13 +124,12 @@ class DoctorDetailPage extends StatelessWidget {
           backgroundColor: Colors.orange[100],
           iconColor: Colors.orange,
           action: () {
-           Navigator.push(
-  context,
-  MaterialPageRoute(
-   builder: (context) => BookAnAppointment(doctor: doctor),
-  ),
-);
-
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BookAnAppointment(doctor: doctor),
+              ),
+            );
           },
         ),
         const SizedBox(height: 10),
