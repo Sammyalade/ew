@@ -1,11 +1,12 @@
 import 'package:health_eaze/models/user_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+part 'register_doctor_model.g.dart';
 
 @JsonSerializable(includeIfNull: false)
-class Doctor {
+class RegisterDoctorModel {
   int id;
   @JsonKey(name: 'user_profile')
-  User userProfile;
+  int userProfile;
   String signature;
   @JsonKey(name: 'registration_number')
   String registrationNumber;
@@ -20,10 +21,11 @@ class Doctor {
   String college;
   String startYear;
   String endYear;
+   @JsonKey(name: 'is_available')
   bool isAvailable;
   double rating;
 
-  Doctor({
+  RegisterDoctorModel({
     required this.id,
     required this.userProfile,
     required this.signature,
@@ -40,9 +42,9 @@ class Doctor {
     required this.rating,
   });
 
-  Doctor.defaultModel()
+  RegisterDoctorModel.defaultModel()
       : id = 0,
-        userProfile = User.defaultUser(),
+        userProfile = 0,
         signature = "",
         registrationNumber = "",
         registrationCouncil = "",
@@ -55,4 +57,7 @@ class Doctor {
         endYear = "",
         isAvailable = false,
         rating = 3.0;
+
+   factory RegisterDoctorModel.fromJson(Map<String, dynamic> json) => _$RegisterDoctorModelFromJson(json);
+  Map<String, dynamic> toJson() => _$RegisterDoctorModelToJson(this);
 }

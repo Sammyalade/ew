@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/models/login_doctor_response.dart';
 import 'package:health_eaze/models/login_model.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/doctor_reg_form.dart';
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/doctor_specialty_selection_page.dart';
@@ -10,48 +11,24 @@ part 'doctor_login_model.g.dart';
 class DoctorLoginModel extends LoginModel{
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
-  final User user; 
-  final List<dynamic> appointments;
-  final List<dynamic> notifications;
+  final UserModel user; 
   @JsonKey(name: 'firebase_token')
   final String firebaseToken;
+  final LoginDoctorResponse loginDoctor;
 
   DoctorLoginModel({
     required this.refreshToken,
     required this.user,
-    required this.appointments,
-    required this.notifications,
     required this.firebaseToken,
+    required this.loginDoctor,
   });
 
   DoctorLoginModel.defaultModel()
       : refreshToken = "",
-        user = User.defaultUser(),
-        appointments = [],
+        user = UserModel.defaultUser(),
         firebaseToken = "",
-        notifications = [];
+        loginDoctor = LoginDoctorResponse.defaultInstance();
 
-  // factory DoctorLoginModel.fromJson(Map<String, dynamic> json) {
-  //   return DoctorLoginModel(
-  //     refreshToken: json['refresh_token'],
-  //     user: User.fromJson(json['user']), // Call the fromJson method of User
-  //     appointments: json['doctor']['appointments'] ?? [],
-  //     notifications: json['doctor']['notifications'] ?? [],
-  //     firebaseToken: json['firebase_token']
-  //   );
-  // }
-
-  // Map<String, dynamic> toJson() {
-  //   return {
-  //     'refresh_token': refreshToken,
-  //     'firebase_token': firebaseToken,
-  //     'user': user.toJson(), // Call the toJson method of User
-  //     'doctor': {
-  //       'appointments': appointments,
-  //       'notifications': notifications,
-  //     },
-  //   };
-  // }
 
   factory DoctorLoginModel.fromJson(Map<String, dynamic> json) => _$DoctorLoginModelFromJson(json);
   Map<String, dynamic> toJson() => _$DoctorLoginModelToJson(this);

@@ -5,8 +5,8 @@ import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 import 'package:health_eaze/doctor/doctor_dashboard.dart';
 import 'package:health_eaze/firebase_options.dart';
 import 'package:health_eaze/models/doctor_login_model.dart';
-import 'package:health_eaze/providers/doctor_model_provider.dart';
-import 'package:health_eaze/providers/doctor_provider.dart';
+import 'package:health_eaze/providers/doctor_login_model_provider.dart';
+import 'package:health_eaze/providers/doctor_register_model_provider.dart';
 import 'package:health_eaze/providers/user_model_provider.dart';
 import 'package:health_eaze/providers/user_provider.dart';
 import 'package:health_eaze/providers/patient_provider.dart';
@@ -45,7 +45,7 @@ Future<void> main() async {
           create: (context)=> DoctorLoginModelProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context)=> DoctorProvider(),
+          create: (context)=> DoctorRegisterModelProvider(),
         ),
       ],
       child: const MyApp(),

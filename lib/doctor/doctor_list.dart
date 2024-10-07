@@ -30,7 +30,7 @@ class DoctorListingPage extends StatefulWidget {
 }
 
 class _DoctorListingPageState extends State<DoctorListingPage> {
-  late Future<List<Doctor>> _futureDoctors;
+  late Future<List<DoctorRequestModel>> _futureDoctors;
   String? _specialty;
   String? _rating;
   String? _name;
@@ -118,13 +118,13 @@ class _DoctorListingPageState extends State<DoctorListingPage> {
 }
 
 class DoctorList extends StatelessWidget {
-  final Future<List<Doctor>> futureDoctors;
+  final Future<List<DoctorRequestModel>> futureDoctors;
 
   const DoctorList({super.key, required this.futureDoctors});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Doctor>>(
+    return FutureBuilder<List<DoctorRequestModel>>(
       future: futureDoctors,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -140,7 +140,7 @@ class DoctorList extends StatelessWidget {
     );
   }
 
-  Widget buildDoctorGrid(List<Doctor> doctors) {
+  Widget buildDoctorGrid(List<DoctorRequestModel> doctors) {
     return GridView.builder(
       itemCount: doctors.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -158,7 +158,7 @@ class DoctorList extends StatelessWidget {
 }
 
 class DoctorCard extends StatelessWidget {
-  final Doctor doctor;
+  final DoctorRequestModel doctor;
 
   const DoctorCard({super.key, required this.doctor});
 
@@ -233,7 +233,7 @@ class DoctorCard extends StatelessWidget {
     );
   }
 
-  void navigateToDoctorDetails(BuildContext context, Doctor doctor) {
+  void navigateToDoctorDetails(BuildContext context, DoctorRequestModel doctor) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -243,7 +243,7 @@ class DoctorCard extends StatelessWidget {
   }
 }
 
-Future<List<Doctor>> fetchDoctors({
+Future<List<DoctorRequestModel>> fetchDoctors({
   String? specialty,
   String? rating,
   String? name,
@@ -264,7 +264,7 @@ Future<List<Doctor>> fetchDoctors({
 
   if (response.statusCode == 200) {
     final jsonResponse = json.decode(response.body) as List;
-    return jsonResponse.map((doctor) => Doctor.fromJson(doctor)).toList();
+    return jsonResponse.map((doctor) => DoctorRequestModel.fromJson(doctor)).toList();
   } else {
     throw Exception('Failed to load doctors');
   }

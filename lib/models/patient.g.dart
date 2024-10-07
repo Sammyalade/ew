@@ -10,7 +10,7 @@ PatientLoginModel _$PatientLoginModelFromJson(Map<String, dynamic> json) =>
     PatientLoginModel(
       refreshToken: json['refresh_token'] as String,
       firebaseToken: json['firebase_token'] as String,
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
+      user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
       patientDetails: json['patient_details'] == null
           ? null
           : PatientDetails.fromJson(

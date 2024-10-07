@@ -12,7 +12,7 @@ class PatientLoginModel extends LoginModel {
 
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
-  final User user; 
+  final UserModel user; 
   @JsonKey(name: 'patient_details')
   PatientDetails? patientDetails;
   final List<dynamic> appointments;
@@ -28,7 +28,7 @@ class PatientLoginModel extends LoginModel {
 
   PatientLoginModel.defaultModel()
       : refreshToken = '',
-        user = User.defaultUser(), 
+        user = UserModel.defaultUser(), 
         patientDetails = PatientDetails.defaultProfile(),
         firebaseToken = '',
         appointments = [];

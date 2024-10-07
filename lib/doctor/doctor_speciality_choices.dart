@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:health_eaze/models/register_doctor_model.dart';
+import 'package:health_eaze/providers/doctor_register_model_provider.dart';
 
 import 'package:health_eaze/screens/introduction_pages/sign_up_page/doctor_reg_form.dart';
 import 'package:health_eaze/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class DoctorSpecialityChoices extends StatefulWidget {
   const DoctorSpecialityChoices({super.key});
@@ -12,7 +15,7 @@ class DoctorSpecialityChoices extends StatefulWidget {
 
 class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
   final int _selectedChoiceIndex = 0;
-  String _selectedChoice = ''; // Variable to store selected choice index
+  String _selectedChoice = ''; 
   DateTime lastPressed = DateTime.now();
 
   List<String> choices = [
@@ -37,6 +40,9 @@ class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
 
   @override
   Widget build(BuildContext context) {
+
+    final doctorRegisterProvider = Provider.of<DoctorRegisterModelProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Doctor Specialty'),
@@ -59,6 +65,7 @@ class _DoctorSpecialityChoicesState extends State<DoctorSpecialityChoices> {
                 onSelectChoice: (choice) {
                   final now = DateTime.now();
                   if (_selectedChoice == choice && now.difference(lastPressed) < const Duration(seconds: 1)) {
+                    doctorRegisterProvider.setSpecialty(choice);
                     Navigator.push(
                       context,
                       MaterialPageRoute(

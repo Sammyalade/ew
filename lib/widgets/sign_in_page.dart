@@ -158,7 +158,10 @@ class LoginScreenState extends State<LoginScreen> {
 
       response.goToDashboard(context);
 
-    } else if (response is DoctorLoginModel) {
+    } if (response is DoctorLoginModel) {
+      // Provider.of<DoctorLoginModelProvider>(context, listen: false)
+      //     .setDoctorLoginModel(response);
+
       response.goToDashboard(context);
     }
   } catch (e) {

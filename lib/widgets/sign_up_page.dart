@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:health_eaze/doctor/doctor_sign_up.dart';
+import 'package:health_eaze/doctor/doctor_speciality_choices.dart';
 import 'package:health_eaze/lab/lab_dashboard.dart';
 import 'package:health_eaze/pharmacy/pharm_dashboard.dart';
+import 'package:health_eaze/providers/doctor_login_model_provider.dart';
+import 'package:health_eaze/providers/doctor_register_model_provider.dart';
 import 'package:health_eaze/services/auth_service.dart';
 import 'package:health_eaze/services/sign_up_service.dart';
 import 'package:health_eaze/utils/utilities.dart';
 import 'package:health_eaze/widgets/sign_in_page.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -24,6 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
   final TextEditingController _passwordController = TextEditingController();
 
   bool _isLoading = false;
@@ -218,7 +222,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
       onPressed: () async {
-        setState(() {
+       await handleSignUp(context);
+      },
+      child: const Text(
+        "Continue",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  Future<void> handleSignUp(BuildContext context) async{
+     setState(() {
           _isLoading = true;
         });
         try {
@@ -231,7 +249,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             String password = _passwordController.text;
             String role = selectedRole;
 
-            await signUpService.signUp(
+             if (!emailRegex.hasMatch(email)) {
+              if (mounted) {
+                await _showDialog(context, 'Error', 'Invalid email format');
+              }
+        return;
+            }
+
+            var response = await signUpService.signUp(
               firstName: firstName,
               lastName: lastName,
               phone: phone,
@@ -243,9 +268,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
             await authService.signUp(email, password);
 
+            if(role == 'DOCTOR'){
+              Provider.of<DoctorRegisterModelProvider>(context, listen: false)
+                .setUserProfile(response.id);
+            }
+
             if (mounted) {
               await _showDialog(context, 'Success', 'Sign up successful');
-              navigateToDashboard(context, role);
+              navigateToBasedOnRole(context, role);
             }
           }
         } catch (e) {
@@ -260,19 +290,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             _isLoading = false;
           });
         }
-      },
-      child: const Text(
-        "Continue",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-          color: Colors.white,
-        ),
-      ),
-    );
   }
-
-  void navigateToDashboard(BuildContext context, String role) {
+  void navigateToBasedOnRole(BuildContext context, String role) {
     Widget nextScreen;
 
     switch (role) {

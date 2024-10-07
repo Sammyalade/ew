@@ -1,9 +1,9 @@
 import 'package:health_eaze/models/UserProfile.dart';
 import 'package:health_eaze/models/user_model.dart';
 
-class Doctor {
+class DoctorRequestModel {
   int id;
-  User userProfile;
+  UserModel userProfile;
   String signature;
   String registrationNumber;
   String registrationCouncil;
@@ -17,7 +17,7 @@ class Doctor {
   bool isAvailable;
   double rating;
 
-  Doctor({
+  DoctorRequestModel({
     required this.id,
     required this.userProfile,
     required this.signature,
@@ -34,9 +34,9 @@ class Doctor {
     required this.rating,
   });
 
-  Doctor.defaultModel()
+  DoctorRequestModel.defaultModel()
       : id = 0,
-        userProfile = User.defaultUser(),
+        userProfile = UserModel.defaultUser(),
         signature = "",
         registrationNumber = "",
         registrationCouncil = "",
@@ -51,12 +51,12 @@ class Doctor {
         rating = 3.0;
 
 
-  factory Doctor.fromJson(Map<String, dynamic> json) {
-    return Doctor(
+  factory DoctorRequestModel.fromJson(Map<String, dynamic> json) {
+    return DoctorRequestModel(
       id: json['id'] ?? 0,  
       userProfile: json['user_profile'] != null 
-        ? User.fromJson(json['user_profile']) 
-        : User.defaultUser(),  
+        ? UserModel.fromJson(json['user_profile']) 
+        : UserModel.defaultUser(),  
       signature: json['signature'] ?? 'N/A',  
       registrationNumber: json['registration_number'] ?? 'N/A',  
       registrationCouncil: json['registration_council'] ?? 'N/A',  

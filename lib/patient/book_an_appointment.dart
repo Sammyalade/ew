@@ -9,7 +9,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 
 class BookAnAppointment extends StatefulWidget {
-  final Doctor doctor;
+  final DoctorRequestModel doctor;
 
   const BookAnAppointment({
     super.key, 

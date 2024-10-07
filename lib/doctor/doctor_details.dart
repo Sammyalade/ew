@@ -13,7 +13,7 @@ import '../widgets/info_card.dart'; // Import the refactored InfoCard widget
 import '../widgets/action_button.dart'; // Import the refactored ActionButton widget
 
 class DoctorDetailPage extends StatelessWidget {
-  final Doctor doctor;
+  final DoctorRequestModel doctor;
 
   const DoctorDetailPage({super.key, required this.doctor});
 

@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:developer';import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:health_eaze/models/auth_user_model.dart';
+import 'package:health_eaze/models/user_model.dart';
 import 'package:health_eaze/services/url_links.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,7 +13,7 @@ class SignUpService {
   final AuthService _authService = AuthService();
   final Uri signUpUrl = Uri.parse('$BASE_URL/auth/users/');
 
-  Future<void> signUp({
+  Future<UserModel> signUp({
     required String firstName,
     required String lastName,
     required String phone,
@@ -52,9 +54,13 @@ class SignUpService {
             imageUrl: 'https://i.pravatar.cc/300', // Default avatar, you can change this
           ),
         );
-
         print('Firebase and Firestore setup completed successfully.');
         print('Sign-up successful: ${response.body}');
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        return UserModel.fromJson(responseData);
+
+
+       
       } else {
         log('Error Status: ${response.statusCode}');
         log('Error Body: ${response.body}');

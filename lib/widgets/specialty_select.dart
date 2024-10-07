@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../doctor/doctor_sign_up.dart';
+import '../doctor/doctor_speciality_choices.dart';
 
 class SpecialtySelect extends StatefulWidget {
   final String title; // Page title

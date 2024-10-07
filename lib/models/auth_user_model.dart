@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable(includeIfNull: false)
-class UserModel{
+class AuthUserModel{
   @JsonKey(name: 'uid')
   final String uid;
   @JsonKey(name: 'email')
@@ -10,15 +10,16 @@ class UserModel{
   @JsonKey(name: 'display_name')
   final String fullName;
 
-  UserModel({required this.uid, required this.email, required this.fullName});
 
-  UserModel.defaultModel():
+  AuthUserModel({required this.uid, required this.email, required this.fullName});
+
+  AuthUserModel.defaultModel():
       uid = '',
       email = '',
       fullName = 'N/A';
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
+  factory AuthUserModel.fromJson(Map<String, dynamic> json) {
+    return AuthUserModel(
       uid: json['uid'] ?? 'error',
       email: json['email'] ?? 'error email',
       fullName: json['display_name'] ?? 'error name',
@@ -26,8 +27,8 @@ class UserModel{
   }
 
   // Factory constructor to create a UserModel from a Firebase User
-  factory UserModel.fromFirebaseUser(User user) {
-    return UserModel(
+  factory AuthUserModel.fromFirebaseUser(User user) {
+    return AuthUserModel(
       uid: user.uid,
       email: user.email ?? 'No email',
       fullName: user.displayName ?? 'No name',
